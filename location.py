@@ -1,14 +1,21 @@
+MORNING = 0
+AFTERNOON = 1
+EVENING = 2
+NIGHT = 3
+
 class Location:
-    def __init__(self, id, name, connections, description, items, observations):
+    def __init__(self, id, time_based_descriptions, items, observations, x, y):
         self.id = id
-        self.name = name
-        self.connections = connections
-        self.description = description
+        self.time_based_descriptions = time_based_descriptions
         self.items = items
         self.observations = observations
+        self.x = x
+        self.y = y
 
     def __str__(self):
         return self.name
 
     def __repr__(self):
-        return self.name
+        output = 'You are in ' + self.name + '.\n'
+        output += self.description + '.\n'
+        output += 'You see ' + ', '.join([str(item) for item in self.items]) + '.\n'
