@@ -1,21 +1,23 @@
-import random
+from creature_type import CreatureType
 
-
-class Creature:
-    def __init__(self, name, level, health, strength, perception, endurance, mana, agility, strengths, weaknesses):
-        self.name = name
-        self.level = level
-        self.health = health
-        self.strength = strength
-        self.perception = perception
-        self.endurance = endurance
-        self.mana = mana
+class Creature(CreatureType):
+    def __init__(self, id, name, description, observations, weaknesses, resistances, immunities, given_name, items, adornments, hit_points, agility, charisma, endurance, intelligence, mana, perception, strength, location):
+        super().__init__(id, name, description, observations, weaknesses, resistances, immunities)
+        self.given_name = given_name
+        self.items = items
+        self.adornments = adornments
+        self.hit_points = hit_points
         self.agility = agility
-        self.strengths = strengths
-        self.weaknesses = weaknesses
+        self.charisma = charisma
+        self.endurance = endurance
+        self.intelligence = intelligence
+        self.mana = mana
+        self.perception = perception
+        self.strength = strength
+        self.location = location
 
     def __repr__(self):
-        return f'Creature {self.name} of level {self.level}'
+        return f'Character {self.name} of level {self.level}'
 
     def get_defensive_roll(self):
-        return random.randint(1, 12) * self.level
+        return super().get_defensive_roll() * self.level

@@ -1,4 +1,4 @@
-from creature import Creature
+from creature_type import Creature
 
 
 class Beast(Creature):

@@ -1,7 +1,4 @@
-MORNING = 0
-AFTERNOON = 1
-EVENING = 2
-NIGHT = 3
+
 
 class Location:
     def __init__(self, id, time_based_descriptions, items, observations, x, y):

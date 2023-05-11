@@ -1,5 +1,5 @@
 from beast import Beast
-from character import Character
+from creature import Character
 from item import Item
 from location import Location
 
@@ -9,6 +9,11 @@ N = 0
 E = 1
 S = 2
 W = 4
+
+MORNING = 0
+AFTERNOON = 1
+EVENING = 2
+NIGHT = 3
 
 DIRECTIONS = {
     0: 'north',
