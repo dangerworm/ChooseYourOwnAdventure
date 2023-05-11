@@ -45,7 +45,7 @@ def command():
                                              "What is your name?"
                                          ]
                                      })
-    elif data['command'] != '':
+    elif data['command'] != '' and data['command'] != 'create_player':
         run_command(game, data['command'], data['arguments'])
 
     elif data['command'] == 'look':
