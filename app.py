@@ -1,6 +1,7 @@
 import json
 
 from flask import Flask, request, Response
+from commands import run_command
 from game import Game
 from game_response import GameResponse
 
@@ -44,6 +45,9 @@ def command():
                                              "What is your name?"
                                          ]
                                      })
+    elif data['command'] != '':
+        run_command(game, data['command'], data['arguments'])
+
     elif data['command'] == 'look':
         game_response = GameResponse(
             game.player.id, game.player.location.description, None)

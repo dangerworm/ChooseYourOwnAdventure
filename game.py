@@ -5,93 +5,115 @@ from location import Location
 
 from random import randint
 
+N = 0
+E = 1
+S = 2
+W = 4
+
+DIRECTIONS = {
+    0: 'north',
+    1: 'east',
+    2: 'south',
+    3: 'west'
+}
+
+
 class Game:
-  def __init__(self):
-    # Create the items
-    self.items = [
-      Item(1, "Sword", "A sharp sword", 10, [], []),
-      Item(2, "Shield", "A sturdy shield", 5, [], []),
-      Item(3, "Potion", "A healing potion", 0, [], []),
-      Item(4, "Key", "A key", 0, [], []),
-      Item(5, "Gold", "A gold coin", 0, [], []),
-      Item(6, "Diamond", "A diamond", 0, [], []),
-      Item(7, "Ruby", "A ruby", 0, [], []),
-      Item(8, "Emerald", "An emerald", 0, [], []),
-      Item(9, "Sapphire", "A sapphire", 0, [], []),
-      Item(10, "Amethyst", "An amethyst", 0, [], []),
-      Item(11, "Pearl", "A pearl", 0, [], []),
-      Item(12, "Topaz", "A topaz", 0, [], []),
-      Item(13, "Opal", "An opal", 0, [], []),
-      Item(14, "Jade", "A jade", 0, [], []),
-      Item(15, "Onyx", "An onyx", 0, [], []),
-      Item(16, "Turquoise", "A turquoise", 0, [], []),
-      Item(17, "Quartz", "A quartz", 0, [], []),
-      Item(18, "Citrine", "A citrine", 0, [], []),
-      Item(19, "Agate", "An agate", 0, [], []),
-      Item(20, "Garnet", "A garnet", 0, [], []),
-    ]
+    def __init__(self):
+        # Create the items
+        self.items = [
+            Item(1, "Sword", "A sharp sword", 10, [], []),
+            Item(2, "Shield", "A sturdy shield", 5, [], []),
+            Item(3, "Potion", "A healing potion", 0, [], []),
+            Item(4, "Key", "A key", 0, [], []),
+            Item(5, "Gold", "A gold coin", 0, [], []),
+            Item(6, "Diamond", "A diamond", 0, [], []),
+            Item(7, "Barrel", "A wooden barrel", 1, [], ["You can see something inside the barrel"], [1,2]),
+        ]
 
-    # Create the locations
-    self.locations = [
-      Location(1, "Forest", [2, 3], "You are in a forest.", [self.items[0], self.items[1]], ["You see a sword and a shield."]),
-      Location(2, "Cave", [1, 4], "You are in a cave.", [self.items[2]], ["You see a potion."]),
-      Location(3, "River", [1, 5], "You are by a river.", [], ["You see a river."]),
-      Location(4, "Castle", [2, 6], "You are in a castle.", [self.items[3]], ["You see a key."]),
-      Location(5, "Beach", [3, 6], "You are on a beach.", [], ["You see a beach."]),
-      Location(6, "Town", [4, 5], "You are in a town.", [self.items[4], self.items[5], self.items[6], self.items[7], self.items[8], self.items[9], self.items[10], self.items[11], self.items[12], self.items[13], self.items[14], self.items[15], self.items[16], self.items[17], self.items[18], self.items[19]], ["You see a town."]),
-    ]
+        # Create the locations
+        self.locations = [
+            Location(1, ["You see a chest", "You see a chest", "You see a chest",
+                     "You see a chest"], [], [S], 'More detail', 4, 1),
+            Location(2, ["Your are in a clearing", "Your are in a clearing", "Your are in a clearing",
+                     "Your are in a clearing"], [], [N, E, S, W], 'More detail', 4, 2),
+            Location(3, ["As you continue along the path to the north, you eventually arrive at a small jungle village. The villagers look at you warily, as they have never seen someone like you before. The village is made up of a collection of small huts and buildings, with thatched roofs and walls made from woven branches and mud. As you look around, you see that the villagers are going about their daily activities. Some are tending to crops in the nearby fields, while others are preparing food over open fires. The air is thick with the sound of jungle animals and birds, and the scent of cooking fires and jungle plants. You notice that there is only one exit from the village, and that is back the way you came to the west. This realization makes you feel a little uneasy, as you realize that you are completely surrounded by the dense jungle. Despite this, you also feel a sense of wonder and curiosity about this new place, and you wonder what kind of adventures await you in this mysterious corner of the world.", "As you continue along the path to the north, you eventually arrive at a small jungle village. The villagers look at you warily, as they have never seen someone like you before. The village is made up of a collection of small huts and buildings, with thatched roofs and walls made from woven branches and mud. As you look around, you see that the villagers are going about their daily activities. Some are tending to crops in the nearby fields, while others are preparing food over open fires. The air is thick with the sound of jungle animals and birds, and the scent of cooking fires and jungle plants. You notice that there is only one exit from the village, and that is back the way you came to the west. This realization makes you feel a little uneasy, as you realize that you are completely surrounded by the dense jungle. Despite this, you also feel a sense of wonder and curiosity about this new place, and you wonder what kind of adventures await you in this mysterious corner of the world.",
+                     "As you continue along the path to the north, you eventually arrive at a small jungle village. The villagers look at you warily, as they have never seen someone like you before. The village is made up of a collection of small huts and buildings, with thatched roofs and walls made from woven branches and mud. As you look around, you see that the villagers are going about their daily activities. Some are tending to crops in the nearby fields, while others are preparing food over open fires. The air is thick with the sound of jungle animals and birds, and the scent of cooking fires and jungle plants. You notice that there is only one exit from the village, and that is back the way you came to the west. This realization makes you feel a little uneasy, as you realize that you are completely surrounded by the dense jungle. Despite this, you also feel a sense of wonder and curiosity about this new place, and you wonder what kind of adventures await you in this mysterious corner of the world.", "As you continue along the path to the north, you eventually arrive at a small jungle village. The villagers look at you warily, as they have never seen someone like you before. The village is made up of a collection of small huts and buildings, with thatched roofs and walls made from woven branches and mud. As you look around, you see that the villagers are going about their daily activities. Some are tending to crops in the nearby fields, while others are preparing food over open fires. The air is thick with the sound of jungle animals and birds, and the scent of cooking fires and jungle plants. You notice that there is only one exit from the village, and that is back the way you came to the west. This realization makes you feel a little uneasy, as you realize that you are completely surrounded by the dense jungle. Despite this, you also feel a sense of wonder and curiosity about this new place, and you wonder what kind of adventures await you in this mysterious corner of the world."], [], [W], 'More detail', 11, 1),
+            Location(4, ["You see a chest", "You see a chest", "You see a chest",
+                     "You see a chest"], [], [E, S], 'More detail', 2, 2),
+            Location(5, ["you are in a clearing. you see 4 possible routes out. North, South, East or West.", "you are in a clearing. you see 4 possible routes out. North, South, East or West.",
+                     "you are in a clearing. you see 4 possible routes out. North, South, East or West.", "you are in a clearing. you see 4 possible routes out. North, South, East or West."], [], [N, E, S, W], 'More detail', 4, 2),
+            Location(6, ["You've arrived in a village", "You've arrived in a village",
+                     "You've arrived in a village", "You've arrived in a village"], [], [W, E, S], 'More detail', 6, 2),
+            Location(7, ["As you continue along the path, you come to a fork in the road where you must choose which way to go. To the north, you can see what looks like a village nestled between the trees. The village seems to be made up of small huts and cottages, and you can see smoke rising from the chimneys. To the west, you can see a different village, also hidden amongst the trees. This one seems larger and more developed, with several buildings and a central square. The path leading north is narrow and winding, and it disappears into the dense forest beyond the village. The path leading west is wider and more defined, suggesting that it is a well-traveled route. Both paths seem to offer different adventures and possibilities, and you feel torn about which way to go. As you stand at the fork in the road, you take a moment to consider your options. The village to the north seems quaint and peaceful, while the village to the west seems larger and more bustling. Ultimately, the decision is yours, and you must choose which way to go based on your own sense of adventure and curiosity.", "As you continue along the path, you come to a fork in the road where you must choose which way to go. To the north, you can see what looks like a village nestled between the trees. The village seems to be made up of small huts and cottages, and you can see smoke rising from the chimneys. To the west, you can see a different village, also hidden amongst the trees. This one seems larger and more developed, with several buildings and a central square. The path leading north is narrow and winding, and it disappears into the dense forest beyond the village. The path leading west is wider and more defined, suggesting that it is a well-traveled route. Both paths seem to offer different adventures and possibilities, and you feel torn about which way to go. As you stand at the fork in the road, you take a moment to consider your options. The village to the north seems quaint and peaceful, while the village to the west seems larger and more bustling. Ultimately, the decision is yours, and you must choose which way to go based on your own sense of adventure and curiosity.",
+                     "As you continue along the path, you come to a fork in the road where you must choose which way to go. To the north, you can see what looks like a village nestled between the trees. The village seems to be made up of small huts and cottages, and you can see smoke rising from the chimneys. To the west, you can see a different village, also hidden amongst the trees. This one seems larger and more developed, with several buildings and a central square. The path leading north is narrow and winding, and it disappears into the dense forest beyond the village. The path leading west is wider and more defined, suggesting that it is a well-traveled route. Both paths seem to offer different adventures and possibilities, and you feel torn about which way to go. As you stand at the fork in the road, you take a moment to consider your options. The village to the north seems quaint and peaceful, while the village to the west seems larger and more bustling. Ultimately, the decision is yours, and you must choose which way to go based on your own sense of adventure and curiosity.", "As you continue along the path, you come to a fork in the road where you must choose which way to go. To the north, you can see what looks like a village nestled between the trees. The village seems to be made up of small huts and cottages, and you can see smoke rising from the chimneys. To the west, you can see a different village, also hidden amongst the trees. This one seems larger and more developed, with several buildings and a central square. The path leading north is narrow and winding, and it disappears into the dense forest beyond the village. The path leading west is wider and more defined, suggesting that it is a well-traveled route. Both paths seem to offer different adventures and possibilities, and you feel torn about which way to go. As you stand at the fork in the road, you take a moment to consider your options. The village to the north seems quaint and peaceful, while the village to the west seems larger and more bustling. Ultimately, the decision is yours, and you must choose which way to go based on your own sense of adventure and curiosity."], [7], [W, N, S], 'More detail', 9, 2),
+            Location(8, ["You see a tiny fairy", "You see a tiny fairy",
+                     "You see a tiny fairy", "You see a tiny fairy"], [], [N], 'More detail', 2, 3),
+            Location(9, ["As you step off the old steam boat, you find yourself at the edge of a dense forest. The tall trees are covered in moss and vines, and the forest floor is a carpet of fallen leaves and twigs. The sound of chirping birds and rustling leaves fill the air, and you can see small patches of wildflowers blooming in the sunlight that filters through the canopy. A small path leads deeper into the forest, lined with trees and the occasional fern. The sound of a stream can be heard in the distance, and the faint smell of wood smoke hangs in the air. Beyond the forest, you can see rolling hills and mountains in the distance, and the sky above is a deep shade of blue with the occasional cloud drifting lazily by. The forest seems peaceful and inviting yet mysterious and full of secrets. You feel a sense of adventure and excitement as you contemplate what lies ahead on your journey through this beautiful wilderness.", "As you step off the old steam boat, you find yourself at the edge of a dense forest. The tall trees are covered in moss and vines, and the forest floor is a carpet of fallen leaves and twigs. The sound of chirping birds and rustling leaves fill the air, and you can see small patches of wildflowers blooming in the sunlight that filters through the canopy. A small path leads deeper into the forest, lined with trees and the occasional fern. The sound of a stream can be heard in the distance, and the faint smell of wood smoke hangs in the air. Beyond the forest, you can see rolling hills and mountains in the distance, and the sky above is a deep shade of blue with the occasional cloud drifting lazily by. The forest seems peaceful and inviting yet mysterious and full of secrets. You feel a sense of adventure and excitement as you contemplate what lies ahead on your journey through this beautiful wilderness.",
+                     "As you step off the old steam boat, you find yourself at the edge of a dense forest. The tall trees are covered in moss and vines, and the forest floor is a carpet of fallen leaves and twigs. The sound of chirping birds and rustling leaves fill the air, and you can see small patches of wildflowers blooming in the sunlight that filters through the canopy. A small path leads deeper into the forest, lined with trees and the occasional fern. The sound of a stream can be heard in the distance, and the faint smell of wood smoke hangs in the air. Beyond the forest, you can see rolling hills and mountains in the distance, and the sky above is a deep shade of blue with the occasional cloud drifting lazily by. The forest seems peaceful and inviting yet mysterious and full of secrets. You feel a sense of adventure and excitement as you contemplate what lies ahead on your journey through this beautiful wilderness.", "As you step off the old steam boat, you find yourself at the edge of a dense forest. The tall trees are covered in moss and vines, and the forest floor is a carpet of fallen leaves and twigs. The sound of chirping birds and rustling leaves fill the air, and you can see small patches of wildflowers blooming in the sunlight that filters through the canopy. A small path leads deeper into the forest, lined with trees and the occasional fern. The sound of a stream can be heard in the distance, and the faint smell of wood smoke hangs in the air. Beyond the forest, you can see rolling hills and mountains in the distance, and the sky above is a deep shade of blue with the occasional cloud drifting lazily by. The forest seems peaceful and inviting yet mysterious and full of secrets. You feel a sense of adventure and excitement as you contemplate what lies ahead on your journey through this beautiful wilderness."], [], [W], 'More detail', 11, 3),
+            Location(10, ["You see a chest. ", "You see a chest. ", "You see a chest. ",
+                     "You see a chest. "], [], [N, S], 'More detail', 4, 6),
+            Location(11, ["You've arrived in a village", "You've arrived in a village",
+                     "You've arrived in a village", "You've arrived in a village"], [], [N, S], 'More detail', 7, 6),
+            Location(12, ["You're at the entrance to a cave", "You're at the entrance to a cave",
+                     "You're at the entrance to a cave", "You're at the entrance to a cave"], [], [N, E, S, W], 'More detail', 4, 8),
+            Location(13, ["You are in a village. ", "You are in a village. ",
+                     "You are in a village. ", "You are in a village. "], [], [N], 'More detail', 0, 9),
+            Location(14, ["You are in a field", "You are in a field", "You are in a field",
+                     "You are in a field"], [], [N, E, S, W], 'More detail', 3, 13),
+            Location(15, ["You've arrived in a village", "You've arrived in a village",
+                     "You've arrived in a village", "You've arrived in a village"], [], [N], 'More detail', 1, 15),
+            Location(16, ["You are on a bridge.", "You are on a bridge.",
+                     "You are on a bridge.", "You are on a bridge."], [], [W, E], 'More detail', 9, 8),
+            Location(17, ["You are on a bridge and there's a troll!", "You are on a bridge and there's a troll!",
+                     "You are on a bridge and there's a troll!", "You are on a bridge and there's a troll!"], [], [N, S], 'More detail', 3, 17),
+        ]
 
-    # Create the creatures
-    self.beasts = [
-      Beast(1, "Goblin", 1, 10, 2, 2, 2, 0, 2, [], [], self.locations[0], []),
-      Beast(2, "Orc", 2, 20, 4, 4, 4, 0, 4, [], [], self.locations[1], []),
-      Beast(3, "Troll", 3, 30, 6, 6, 6, 0, 6, [], [], self.locations[2], []),
-      Beast(4, "Dragon", 4, 40, 8, 8, 8, 0, 8, [], [], self.locations[3], []),
-      Beast(5, "Giant", 5, 50, 10, 10, 10, 0, 10, [], [], self.locations[4], []),
-      Beast(6, "Golem", 6, 60, 12, 12, 12, 0, 12, [], [], self.locations[5], [])
-    ]
+        # Create the creatures
+        self.beasts = [
+            Beast(4, "Horse", 4, 40, 8, 8, 8, 0, 8, [], [], 14, []),
+            Beast(1, "Troll", 3, 30, 6, 6, 6, 0, 6, [], [], 17, [])
+        ]
 
-    self.characters = [
-      Character(1, "Hero", 1, 10, 2, 2, 2, 0, 2, [], [], 0, 2, 2, self.locations[4], []),
-      Character(2, "Knight", 2, 20, 4, 4, 4, 0, 4, [], [], 0, 4, 4, self.locations[3], []),
-      Character(3, "Warrior", 3, 30, 6, 6, 6, 0, 6, [], [], 0, 6, 6, self.locations[3], []),
-      Character(4, "Paladin", 4, 40, 8, 8, 8, 0, 8, [], [], 0, 8, 8, self.locations[3], []),
-      Character(5, "Ranger", 5, 50, 10, 10, 10, 0, 10, [], [], 0, 10, 10, self.locations[0], []),
-      Character(6, "Bard", 6, 60, 12, 12, 12, 0, 12, [], [], 0, 12, 12, self.locations[5], []),
-    ]
-    
-    self.player = None
+        self.characters = [
+            Character(1, "Hero", 1, 10, 2, 2, 2, 0, 2, [],
+                      [], 0, 2, 2, self.locations[4], [])
+        ]
 
-  def setup_player(self, name, choose_stats):
-    if name == None:
-      name = input("What is your name? ")
-    
-    if choose_stats == None:
-      choose_stats = input("Do you want to choose your character's stats? (y/n) ")
+        self.player = None
 
-    if (choose_stats == "y"):
-      print("Choose your character's stats:")
-      level = int(input("Level: "))
-      health = int(input("Health: "))
-      strength = int(input("Strength: "))
-      perception = int(input("Perception: "))
-      endurance = int(input("Endurance: "))
-      mana = int(input("Mana: "))
-      agility = int(input("Agility: "))
-      charisma = int(input("Charisma: "))
-      intelligence = int(input("Intelligence: "))
-    else:
-      minStat = 6
-      maxStat = 14
+    def setup_player(self, name, choose_stats):
+        if name == None:
+            name = input("What is your name? ")
 
-      level = 1
-      health = 10
-      strength = randint(minStat, maxStat)
-      perception = randint(minStat, maxStat)
-      endurance = randint(minStat, maxStat)
-      mana = randint(minStat, maxStat)
-      agility = randint(minStat, maxStat)
-      charisma = randint(minStat, maxStat)
-      intelligence = randint(minStat, maxStat)
+        if choose_stats == None:
+            choose_stats = input(
+                "Do you want to choose your character's stats? (y/n) ")
 
-    self.player = Character(1, name, level, health, strength, perception, endurance, mana, agility, [], [], 0, charisma, intelligence, self.locations[0], [])
+        if (choose_stats == "y"):
+            print("Choose your character's stats:")
+            level = int(input("Level: "))
+            health = int(input("Health: "))
+            strength = int(input("Strength: "))
+            perception = int(input("Perception: "))
+            endurance = int(input("Endurance: "))
+            mana = int(input("Mana: "))
+            agility = int(input("Agility: "))
+            charisma = int(input("Charisma: "))
+            intelligence = int(input("Intelligence: "))
+        else:
+            minStat = 6
+            maxStat = 14
+
+            level = 1
+            health = 10
+            strength = randint(minStat, maxStat)
+            perception = randint(minStat, maxStat)
+            endurance = randint(minStat, maxStat)
+            mana = randint(minStat, maxStat)
+            agility = randint(minStat, maxStat)
+            charisma = randint(minStat, maxStat)
+            intelligence = randint(minStat, maxStat)
+
+        self.player = Character(1, name, level, health, strength, perception, endurance, mana, agility, [
+        ], [], 0, charisma, intelligence, self.locations[0], [])
