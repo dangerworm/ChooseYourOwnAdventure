@@ -14,3 +14,10 @@ DIRECTIONS = {
     2: 'south',
     3: 'west'
 }
+
+DIRECTION_NAMES = {
+    'north': 0,
+    'east': 1,
+    'south': 2,
+    'west': 3
+}

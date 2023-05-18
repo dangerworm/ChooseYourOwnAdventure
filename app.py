@@ -5,6 +5,8 @@ from commands import run_command
 from game import Game
 from game_response import GameResponse
 
+from constants import MORNING, AFTERNOON, EVENING, NIGHT
+
 app = Flask(__name__)
 game = Game()
 
@@ -21,7 +23,7 @@ def welcome():
                                          ]
                                      })
     else:
-        game_response = GameResponse('Welcome back, adventurer!', None)
+        game_response = GameResponse(game.player.id, 'Welcome back, adventurer!', None)
 
     response = Response(json.dumps(game_response, default=vars),
                         status=200, mimetype='application/json')
@@ -38,6 +40,13 @@ def command():
         name = data['arguments']['name']
         game.setup_player(name, 'n')
 
+        game_response = GameResponse(
+                game.player.id, game.player.location.location_summary(MORNING), None)
+
+        return Response(json.dumps(game_response, default=vars),
+                        status=200, mimetype='application/json')
+
+
     if game.player == None:
         game_response = GameResponse(None, 'You must set up a character before playing.',
                                      {
@@ -45,8 +54,8 @@ def command():
                                              "What is your name?"
                                          ]
                                      })
-    elif data['command'] != '' and data['command'] != 'create_player':
-        run_command(game, data['command'], data['arguments'])
+    elif data['command'] != '':
+        game_response = run_command(game, data['command'], data['arguments'])
 
     elif data['command'] == 'look':
         game_response = GameResponse(
@@ -75,4 +84,4 @@ def command():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(port=6000, debug=True)

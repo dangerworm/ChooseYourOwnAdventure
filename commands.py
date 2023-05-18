@@ -1,5 +1,5 @@
 from game_response import GameResponse
-from game import DIRECTIONS, N, S, E, W
+from constants import DIRECTION_NAMES, N, S, E, W
 
 def run_command(game, command, arguments):
   if command == 'attack':
@@ -44,31 +44,48 @@ def equip(game, item):
     pass
 
 def go(game, arguments):
-  direction = arguments[0]
+  direction_name = arguments['direction']
+  direction = DIRECTION_NAMES[direction_name]
   
   if direction not in game.player.location.exits:
     return GameResponse(game.player.id, 'You cannot go that way.', None)
   
-  x_values = [location.x for location in game.locations]
-  y_values = [location.y for location in game.locations]
-
-  x_values = x_values.sort()
-  y_values = y_values.sort()
-
-  x_index = x_values.index(game.player.location.x)
-  y_index = y_values.index(game.player.location.y)
+  dx = 0
+  dy = 0
 
   if direction == N:
-    y_index -= 1
+    dy = -1
   elif direction == E:
-    x_index += 1
+    dx = 1
   elif direction == S:
-    y_index += 1
+    dy = 1
   elif direction == W:
-    x_index -= 1
+    dx = -1
 
-  game.player.location = [location for location in game.locations if location.x == x_values[x_index] and location.y == y_values[y_index]][0]
+  current_location = game.player.location
+  x_locations = [location for location in game.locations if location.x == current_location.x]
+  y_locations = [location for location in game.locations if location.y == current_location.y]
+  new_location = None
 
+  if direction == N:
+    x_locations.sort(key=lambda location: location.y, reverse=True)
+    new_location = [location for location in x_locations if location.y < current_location.y][0]
+    
+  elif direction == S:
+    x_locations.sort(key=lambda location: location.y, reverse=False)
+    new_location = [location for location in x_locations if location.y > current_location.y][0]
+  
+  elif direction == E:
+    y_locations.sort(key=lambda location: location.x, reverse=False)
+    new_location = [location for location in y_locations if location.x > current_location.x][0]
+  
+  elif direction == W:
+    y_locations.sort(key=lambda location: location.x, reverse=True)
+    new_location = [location for location in y_locations if location.x < current_location.x][0]
+
+  
+  game.player.location = new_location
+  
   return GameResponse(game.player.id, game.player.location.location_summary(game.time_of_day), None)
 
 def help():
