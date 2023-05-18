@@ -16,6 +16,8 @@ def run_command(game, command, arguments):
      return help()
   elif command == 'inventory':
      return inventory(game)
+  elif command == 'investigate':
+     return investigate(game, arguments)
   elif command == 'load':
      return load(game)
   elif command == 'look':
@@ -95,11 +97,19 @@ def help():
 def inventory(game):
     pass
 
+def investigate(game, arguments):
+   location_item_ids = game.player.location.items
+   list_of_items = [item for item in game.items if item.id in location_item_ids]
+   item_being_investigated = [item for item in list_of_items if item.name.lower() == arguments['item'].lower()][0]
+   return GameResponse(game.player.id, str(item_being_investigated.investigation(game.items)), game.player.location.id)
+
 def load(game):
     pass
 
 def look(game):
-  return GameResponse(game.player.id, game.player.location, None)
+   location_item_ids = game.player.location.items
+   list_of_items = [item for item in game.items if item.id in location_item_ids]
+   return GameResponse(game.player.id, game.player.location.observations_and_items(list_of_items), game.player.location.id)
 
 def quit(game):
     pass

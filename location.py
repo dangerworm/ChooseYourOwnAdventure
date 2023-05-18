@@ -17,10 +17,8 @@ class Location:
         output += ', '.join([DIRECTIONS[path] for path in self.exits])
         return output
 
-    def observations_and_items(self):
+    def observations_and_items(self, list_of_items):
         output = '/n'.join([str(observation) for observation in self.observations]) + '\n'
-        output += 'You see ' + ', '.join([str(item) for item in self.items]) + '.\n'
+        output += 'You see ' + ', '.join([str(item) for item in list_of_items]) + '.\n'
         return output
 
-
-    

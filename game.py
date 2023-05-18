@@ -17,13 +17,15 @@ class Game:
             Item(4, "Key", "A key", [], [], [], 10, 100, 3, -1),
             Item(5, "Gold", "A gold coin", [], [], [], 10, 100, 3, -1),
             Item(6, "Diamond", "A diamond", [], [], [], 10, 100, 3, -1),
-            Item(7, "Barrel", "A wooden barrel", ["You can see something inside the barrel"], [], [1,2], 10, 100, 3, -1)
+            Item(7, "Barrel", "A wooden barrel", ["You can see something inside the barrel"], [], [1,2], 10, 100, 3, -1),
+            Item(8, "Chest", "An iron chest", ["You see a sword, a shield, and a pouch"], [], [1,2,9], 15, 200, 15, -1),
+            Item(9, "Pouch", "A cloth pouch", ["You see a potion inside"], [], [3], 1, 2, 1, -1)
         ]
 
         # Create the locations
         self.locations = [
             Location(1, ["You see a chest", "You see a chest", "You see a chest",
-                     "You see a chest"], [], [S], [], 4, 1),
+                     "You see a chest"], [], [S], [8], 4, 1),
             Location(2, ["You are in a clearing", "You are in a clearing", "You are in a clearing",
                      "You are in a clearing"], [], [N, E, S, W], [], 4, 2),
             Location(3, ["As you continue along the path to the north, you eventually arrive at a small jungle village. The villagers look at you warily, as they have never seen someone like you before. The village is made up of a collection of small huts and buildings, with thatched roofs and walls made from woven branches and mud. As you look around, you see that the villagers are going about their daily activities. Some are tending to crops in the nearby fields, while others are preparing food over open fires. The air is thick with the sound of jungle animals and birds, and the scent of cooking fires and jungle plants. You notice that there is only one exit from the village, and that is back the way you came to the west. This realization makes you feel a little uneasy, as you realize that you are completely surrounded by the dense jungle. Despite this, you also feel a sense of wonder and curiosity about this new place, and you wonder what kind of adventures await you in this mysterious corner of the world.", "As you continue along the path to the north, you eventually arrive at a small jungle village. The villagers look at you warily, as they have never seen someone like you before. The village is made up of a collection of small huts and buildings, with thatched roofs and walls made from woven branches and mud. As you look around, you see that the villagers are going about their daily activities. Some are tending to crops in the nearby fields, while others are preparing food over open fires. The air is thick with the sound of jungle animals and birds, and the scent of cooking fires and jungle plants. You notice that there is only one exit from the village, and that is back the way you came to the west. This realization makes you feel a little uneasy, as you realize that you are completely surrounded by the dense jungle. Despite this, you also feel a sense of wonder and curiosity about this new place, and you wonder what kind of adventures await you in this mysterious corner of the world.",

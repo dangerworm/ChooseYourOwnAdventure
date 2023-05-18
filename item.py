@@ -18,4 +18,9 @@ class Item:
         print(f"You have dropped {self.name}")
 
     def __str__(self):
-        return f"{self.name}: {self.description}"
+        return f"{self.description}"
+
+    def investigation(self, item_objects):
+        list_of_items = [item for item in item_objects if item.id in self.contains]
+        output = 'You see ' + ', '.join([str(item) for item in list_of_items]) + '.\n'
+        return output
