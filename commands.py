@@ -51,18 +51,6 @@ def go(game, arguments):
   
   if direction not in game.player.location.exits:
     return GameResponse(game.player.id, 'You cannot go that way.', None)
-  
-  dx = 0
-  dy = 0
-
-  if direction == N:
-    dy = -1
-  elif direction == E:
-    dx = 1
-  elif direction == S:
-    dy = 1
-  elif direction == W:
-    dx = -1
 
   current_location = game.player.location
   x_locations = [location for location in game.locations if location.x == current_location.x]
@@ -85,7 +73,8 @@ def go(game, arguments):
     y_locations.sort(key=lambda location: location.x, reverse=True)
     new_location = [location for location in y_locations if location.x < current_location.x][0]
 
-  
+  new_location.spawn_creatures(game)
+
   game.player.location = new_location
   
   return GameResponse(game.player.id, game.player.location.location_summary(game.time_of_day), None)

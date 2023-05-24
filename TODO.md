@@ -8,3 +8,10 @@
 - Make playable
   - movement added
 - Instantiate a random enemy - Next to do ! 
+
+Add random name generator
+Add database
+
+
+future developments (back burner until up and running):
+dealing with permanence of baddies in a location, e.g. if killed, what happens to body, if not killed, do they remain? etc.
