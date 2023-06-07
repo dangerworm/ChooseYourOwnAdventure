@@ -1,9 +1,18 @@
-from game_response import GameResponse
+from classes.game_response import GameResponse
 from constants import DIRECTION_NAMES, N, S, E, W
+from player_actions.attack import Attack
 
 def run_command(game, command, arguments):
   if command == 'attack':
-    return attack(game, arguments)
+    
+    target, weapons = Attack.parse(game, arguments)
+
+    result = Attack.can_act(game, target, weapons)
+    if result.valid:
+       message = Attack.act(game, target, weapons)
+    else:
+      message = result.message
+      return GameResponse(game.player.id, message, None)
   elif command == 'cast':
     return cast(game, arguments)
   elif command == 'drop':
@@ -32,9 +41,6 @@ def run_command(game, command, arguments):
      return unequip(game, arguments)
   elif command == 'use':
      return use(game, arguments)
-
-def attack(game, target):
-    pass
 
 def cast(game, spell):
     pass

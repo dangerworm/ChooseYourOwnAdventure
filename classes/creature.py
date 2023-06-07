@@ -1,4 +1,4 @@
-from creature_type import CreatureType
+from classes.creature_type import CreatureType
 import random 
 
 class Creature(CreatureType):

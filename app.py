@@ -1,9 +1,9 @@
 import json
 
 from flask import Flask, request, Response
-from commands import run_command
+from player_actions.commands import run_command
 from game import Game
-from game_response import GameResponse
+from classes.game_response import GameResponse
 
 from constants import MORNING, AFTERNOON, EVENING, NIGHT
 
