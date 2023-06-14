@@ -1,18 +1,16 @@
 from classes.game_response import GameResponse
 from constants import DIRECTION_NAMES, N, S, E, W
 from player_actions.attack import Attack
+from player_actions.take import Take
 
 def run_command(game, command, arguments):
   if command == 'attack':
-    
     target, weapons = Attack.parse(game, arguments)
-
-    result = Attack.can_act(game, target, weapons)
-    if result.valid:
+    valid, message = Attack.can_act(game, target, weapons)
+    if valid:
        message = Attack.act(game, target, weapons)
-    else:
-      message = result.message
-      return GameResponse(game.player.id, message, None)
+    return GameResponse(game.player.id, message, None)
+  
   elif command == 'cast':
     return cast(game, arguments)
   elif command == 'drop':
@@ -36,7 +34,12 @@ def run_command(game, command, arguments):
   elif command == 'save':
      return save(game)
   elif command == 'take':
-     return take(game, arguments)
+    item = Take.parse(game, arguments)
+    valid, message = Take.can_act(game, item)
+    if valid:
+       message = Take.act(game, item)
+    return GameResponse(game.player.id, message, None)
+
   elif command == 'unequip':
      return unequip(game, arguments)
   elif command == 'use':
@@ -113,6 +116,7 @@ def save(game):
     pass
 
 def take(game, item):
+    
     pass
 
 def unequip(game, item):

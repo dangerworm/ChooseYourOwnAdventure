@@ -8,6 +8,7 @@ class Item:
         self.contains = contains
         self.value = value
         self.hit_points = hit_points
+        self.starting_hit_points = hit_points
         self.attack_points = attack_points
         self.uses_count = uses_count
 

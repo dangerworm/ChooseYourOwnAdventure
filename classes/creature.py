@@ -8,6 +8,7 @@ class Creature(CreatureType):
         self.items = items
         self.adornments = adornments
         self.hit_points = hit_points
+        self.starting_hit_points = hit_points
         self.agility = agility
         self.charisma = charisma
         self.endurance = endurance
@@ -24,7 +25,7 @@ class Creature(CreatureType):
         return super().get_defensive_roll() * self.level
 
     def generate(creature_type):
-        print(creature_type)
+        
         return Creature(1, creature_type.name, creature_type.description, creature_type.characteristics, creature_type.observations, creature_type.weaknesses, 
                         creature_type.resistances, creature_type.immunities, given_name='', items=[], adornments=[], 
                         hit_points=random.randint(*creature_type.characteristics.hit_points_range),

@@ -9,7 +9,7 @@ from constants import DIRECTIONS, N, S, E, W
 class Factory:
     def generate_items():
         return [
-            Item(1, "Sword", "A sharp sword", [], [], [], 10, 100, 3, -1),
+            Item(1, "Sword", "A sharp sword", [], [], [], 10, 100, 20, -1),
             Item(2, "Shield", "A sturdy shield", [], [], [], 10, 100, 3, -1),
             Item(3, "Potion", "A healing potion", [], [], [], 10, 100, 3, -1),
             Item(4, "Key", "A key", [], [], [], 10, 100, 3, -1),
@@ -30,8 +30,8 @@ class Factory:
     
     def generate_locations(items):
         return [
-            Location(1, ["It's a bright sunlit morning. You see a chest", "It's a calm, breezy afternoon. You see a chest", "You see a chest",
-                     "You see a chest"], [], [S], [Factory.get_item_from_item_id(items, 8)], 4, 1, [CreatureTimeProbabilities(1, 1, [1, 0.2, 0.5, 0]), CreatureTimeProbabilities(3, 2, [0, 0, 0.1, 0.99])]),
+            Location(1, ["It's a bright sunlit morning.", "It's a calm, breezy afternoon.", "It's a quiet, warm evening.",
+                     "It's a dark, gloomy night."], [], [S], [Factory.get_item_from_item_id(items, 8), Factory.get_item_from_item_id(items, 1)], 4, 1, [CreatureTimeProbabilities(1, 1, [1, 0.2, 0.5, 0]), CreatureTimeProbabilities(3, 2, [0, 0, 0.1, 0.99])]),
             Location(2, ["You are in a clearing", "You are in a clearing", "You are in a clearing",
                      "You are in a clearing"], [], [N, E, S, W], [], 4, 2, [CreatureTimeProbabilities(2, 2, [0, 0.2, 0.5, 0])]),
             Location(3, ["As you continue along the path to the north, you eventually arrive at a small jungle village. The villagers look at you warily, as they have never seen someone like you before. The village is made up of a collection of small huts and buildings, with thatched roofs and walls made from woven branches and mud. As you look around, you see that the villagers are going about their daily activities. Some are tending to crops in the nearby fields, while others are preparing food over open fires. The air is thick with the sound of jungle animals and birds, and the scent of cooking fires and jungle plants. You notice that there is only one exit from the village, and that is back the way you came to the west. This realization makes you feel a little uneasy, as you realize that you are completely surrounded by the dense jungle. Despite this, you also feel a sense of wonder and curiosity about this new place, and you wonder what kind of adventures await you in this mysterious corner of the world.", "As you continue along the path to the north, you eventually arrive at a small jungle village. The villagers look at you warily, as they have never seen someone like you before. The village is made up of a collection of small huts and buildings, with thatched roofs and walls made from woven branches and mud. As you look around, you see that the villagers are going about their daily activities. Some are tending to crops in the nearby fields, while others are preparing food over open fires. The air is thick with the sound of jungle animals and birds, and the scent of cooking fires and jungle plants. You notice that there is only one exit from the village, and that is back the way you came to the west. This realization makes you feel a little uneasy, as you realize that you are completely surrounded by the dense jungle. Despite this, you also feel a sense of wonder and curiosity about this new place, and you wonder what kind of adventures await you in this mysterious corner of the world.",
@@ -67,4 +67,8 @@ class Factory:
         ]
     
     def get_item_from_item_id(items, item_id):
-        return [item for item in items if item.id == item_id]
+        list_of_matching_items = [item for item in items if item.id == item_id]
+        if len(list_of_matching_items) > 0:
+            return list_of_matching_items[0]
+        else:
+            pass
