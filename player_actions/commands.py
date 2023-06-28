@@ -105,9 +105,7 @@ def load(game):
     pass
 
 def look(game):
-   location_item_ids = game.player.location.items
-   list_of_items = [item for item in game.items if item.id in location_item_ids]
-   return GameResponse(game.player.id, game.player.location.observations_and_items(list_of_items), game.player.location.id)
+   return GameResponse(game.player.id, game.player.location.observations_and_items(), game.player.location.id)
 
 def quit(game):
     pass

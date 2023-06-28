@@ -8,7 +8,13 @@
 - Make playable
   - movement added
 - Instantiate a random enemy - done! 
-- add combat interaction to enemy (commands to attack and behaviour to be attacked back) - next to do! 
+- add combat interaction to items in locations (commands to attack items) - done!
+- add combat interaction to enemy (commands to attack) - done!
+
+- Next:
+- add in front end to avoid using postman - next to do!
+- and behaviour to be attacked back by baddies - next to do after front end in place.
+- check and update any hard coded items in any other locations (may not be an issue)
 
 Add database
 
