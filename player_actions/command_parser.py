@@ -7,7 +7,7 @@ class CommandParser():
       '^(?:using|with|wielding)[\w ]* (\w+) (\w+)[\w ]* (\w+)', #to account for poorly worded commands!
       '^(\w+)[the ]* (\w+) (?:using|with|wielding)[\w ]* (\w+) and[\w ]* (\w+)$',
       '^(\w+)[the ]* (\w+) (?:using|with|wielding)[\w ]* (\w+)$',
-      '^(\w+)[the ]* (\w+) (?:using|with|wielding)[\w ]* (\w+)$',
+      '^(\w+|pick up)[the ]* (\w+)$',
       '^(go|walk|move|visit) (?:(back|to|the|towards|in the direction of| )*)(\w+)$',
       '^(\w+)$'
     ]        
@@ -31,7 +31,7 @@ class CommandParser():
 
     command = ''
     arguments = {}
-
+    print(user_input) #test print
     matches = self.find_first_match(user_input) #this is a list
     if len(matches) > 0:
       for word in matches:

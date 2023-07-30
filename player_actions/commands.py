@@ -33,7 +33,7 @@ def run_command(game, command, arguments):
      return quit(game)
   elif command == 'save':
      return save(game)
-  elif command == 'take':
+  elif command == 'take' or command == 'pick up':
     item = Take.parse(game, arguments)
     valid, message = Take.can_act(game, item)
     if valid:

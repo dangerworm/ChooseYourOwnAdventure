@@ -38,12 +38,12 @@ def welcome():
 @app.route('/command', methods=['POST'])
 def command():
     data = request.get_json(force=True)
-    input = data['command']
+    input = data['data']
 
     game_response = {}
 
-    if data['command'] == 'create_player':
-        name = data['arguments']['name']
+    if input[:13] == 'create_player':
+        name = input[14:]
         game.setup_player(name, 'n')
 
         game_response = GameResponse(
@@ -67,7 +67,7 @@ def command():
     command, arguments = parser.get_command_and_arguments_from_input(input)
 
     if command != '':
-        game_response = run_command(game, data['command'], data['arguments'])
+        game_response = run_command(game, command, arguments)
 
     elif command == 'look':
         game_response = GameResponse(

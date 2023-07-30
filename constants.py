@@ -22,6 +22,7 @@ DIRECTION_NAMES = {
     'west': 3
 }
 
+#Number below represents the number of arguments
 POSSIBLE_COMMANDS = {
    'attack': 2,
    'cast': 2,
@@ -39,6 +40,7 @@ POSSIBLE_COMMANDS = {
    'quit': 0,
    'save': 0,
    'take': 1,
+   'pick up': 1,
    'unequip': 1,
    'use': 1,
 }

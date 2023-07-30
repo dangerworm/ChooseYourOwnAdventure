@@ -12,7 +12,6 @@ function App() {
     playerId,
     message,
     data,
-    createPlayer,
     sendCommand,
     apiResponseError,
   } = useApiContext();
@@ -63,7 +62,7 @@ function App() {
             />
             <Button
               variant="outlined"
-              onClick={() => createPlayer(playerName)}
+              onClick={() => sendCommand(`create_player ${playerName}`)}
             >
               Create Player
             </Button>

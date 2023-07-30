@@ -27,33 +27,15 @@ export const ApiContextProvider = ({ children }) => {
       })
   }, [baseUrl])
 
-  const createPlayer = useCallback(async (playerName) => {
-    setApiResponseError(undefined);
-
-    const formData = {
-      command: 'create_player',
-      arguments: {
-        name: playerName
-      }
-    }
-
-    axios
-      .post(`${baseUrl}/command`, formData)
-      .then((response) => {
-        setPlayerId(response.data.player_id);
-        setMessage(response.data.message);
-        setData(response.data.data);
-      })
-      .catch((error) => {
-        setApiResponseError(error.message);
-      })
-  }, [baseUrl])
-
   const sendCommand = useCallback(async (input) => {
     setApiResponseError(undefined);
 
+    const requestData = {
+      data: input
+    }
+
     axios
-      .post(`${baseUrl}/command`, input)
+      .post(`${baseUrl}/command`, requestData)
       .then((response) => {
         setPlayerId(response.data.player_id);
         setMessage(response.data.message);
@@ -72,7 +54,6 @@ export const ApiContextProvider = ({ children }) => {
         message,
         data,
         sendCommand,
-        createPlayer,
         apiResponseError,
 
       }}
