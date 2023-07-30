@@ -37,7 +37,7 @@ def welcome():
 
 @app.route('/command', methods=['POST'])
 def command():
-    data = request.get_json()
+    data = request.get_json(force=True)
     input = data['command']
 
     game_response = {}
