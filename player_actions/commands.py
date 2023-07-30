@@ -17,7 +17,7 @@ def run_command(game, command, arguments):
     return drop(game, arguments)
   elif command == 'equip':
     return equip(game, arguments)
-  elif command == 'go':
+  elif command in ['go', 'walk' 'move', 'visit']:
     return go(game, arguments)
   elif command == 'help':
      return help()

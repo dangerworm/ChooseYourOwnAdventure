@@ -12,39 +12,6 @@ export const ApiContextProvider = ({ children }) => {
 
   const baseUrl = 'http://localhost:5050';
 
-  const parseCommand = (input) => {
-    const singleCommandRegex = /^(\w+)$/;
-
-    let matches = singleCommandRegex.exec(input);
-    if (matches) {
-      return {
-        command: matches[1],
-      }
-    }
-
-    const targetCommandRegex = /^(\w+)[\w ]*(\w+)$/;
-    matches = targetCommandRegex.exec(input);
-    if (matches) {
-      return {
-        command: matches[1],
-        arguments: {
-          target: matches.length > 1 ? matches[2] : ''
-        }
-      }
-    }
-
-    const multiCommandRegex = /(\w+) [\w ]*(\w+) with [\w ]*(\w+)/;
-    matches = multiCommandRegex.exec(input);
-    
-    return {
-      command: matches[1],
-      arguments: {
-        target: matches.length > 1 ? matches[2] : '',
-        weapons: [matches.length > 2 ? matches[3] : '']
-      }
-    }
-  }
-
   const initialise = useCallback(() => {
     setApiResponseError(undefined);
 
@@ -82,13 +49,11 @@ export const ApiContextProvider = ({ children }) => {
       })
   }, [baseUrl])
 
-  const sendCommand = useCallback(async (command) => {
+  const sendCommand = useCallback(async (input) => {
     setApiResponseError(undefined);
 
-    const formData = parseCommand(command);
-
     axios
-      .post(`${baseUrl}/command`, formData)
+      .post(`${baseUrl}/command`, input)
       .then((response) => {
         setPlayerId(response.data.player_id);
         setMessage(response.data.message);

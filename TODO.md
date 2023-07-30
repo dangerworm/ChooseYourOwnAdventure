@@ -12,7 +12,9 @@
 - add combat interaction to enemy (commands to attack) - done!
 
 - Next:
-- add in front end to avoid using postman - next to do!
+- continue with front end to avoid using postman - next to do is work on regex for accomodating varying text commands.
+
+- Forward plan:
 - and behaviour to be attacked back by baddies - next to do after front end in place.
 - check and update any hard coded items in any other locations (may not be an issue)
 

@@ -1,4 +1,5 @@
 import json
+from player_actions.command_parser import CommandParser
 
 from flask import Flask, request, Response
 from flask_cors import CORS
@@ -37,6 +38,8 @@ def welcome():
 @app.route('/command', methods=['POST'])
 def command():
     data = request.get_json()
+    input = data['command']
+
     game_response = {}
 
     if data['command'] == 'create_player':
@@ -57,16 +60,22 @@ def command():
                                              "What is your name?"
                                          ]
                                      })
-    elif data['command'] != '':
+        return Response(json.dumps(game_response, default=vars),
+                        status=200, mimetype='application/json')
+        
+    parser = CommandParser()
+    command, arguments = parser.get_command_and_arguments_from_input(input)
+
+    if command != '':
         game_response = run_command(game, data['command'], data['arguments'])
 
-    elif data['command'] == 'look':
+    elif command == 'look':
         game_response = GameResponse(
             game.player.id, game.player.location.description, None)
 
-    elif data['command'] == 'go':
+    elif command == 'go':
         # Get the location name from the arguments in data
-        location_name = data['arguments']['location']
+        location_name = arguments['target']
         
         # Find all locations with location_name in their name
         locations = [location for location in game.locations if location_name.lower() in location.name.lower()]

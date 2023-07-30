@@ -21,3 +21,24 @@ DIRECTION_NAMES = {
     'south': 2,
     'west': 3
 }
+
+POSSIBLE_COMMANDS = {
+   'attack': 2,
+   'cast': 2,
+   'drop': 1,
+   'equip': 1,
+   'go': 1,
+   'walk': 1,
+   'move': 1,
+   'visit': 1,
+   'help': 0,
+   'inventory': 0,
+   'investigate': 1,
+   'load': 0,
+   'look': 0,
+   'quit': 0,
+   'save': 0,
+   'take': 1,
+   'unequip': 1,
+   'use': 1,
+}
