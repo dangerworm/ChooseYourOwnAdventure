@@ -1,5 +1,7 @@
 # To Do
 
+Trello board: https://trello.com/b/tRZi7W8V/choose-your-own-adventure 
+
 - Change classes to match data structures on Sheets
   update 11/5 - 80% done. few left to do. see yellow classes in sheets.
 
