@@ -1,14 +1,9 @@
 
 from classes.player import Player
-from classes.item import Item
-from classes.location import Location
-from classes.creature_time_probabilities import CreatureTimeProbabilities
-from classes.creature_type import CreatureType
-from classes.creature_type_characteristics import CreatureTypeCharacteristics
 from random import randint
 
-from constants import DIRECTIONS, N, S, E, W, MORNING, AFTERNOON, EVENING, NIGHT
 from game_data.factory import Factory
+from utils.constants import DIRECTIONS, N, S, E, W, MORNING, AFTERNOON, EVENING, NIGHT
 
 class Game:
     def __init__(self):

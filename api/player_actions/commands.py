@@ -1,7 +1,7 @@
 from classes.game_response import GameResponse
-from constants import DIRECTION_NAMES, N, S, E, W
 from player_actions.attack import Attack
 from player_actions.take import Take
+from utils.constants import DIRECTION_NAMES, N, S, E, W
 
 def run_command(game, command, arguments):
   if command == 'attack':

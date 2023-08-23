@@ -4,7 +4,7 @@ from classes.item import Item
 from classes.creature_type import CreatureType
 from classes.creature_type_characteristics import CreatureTypeCharacteristics
 from classes.location import Location
-from constants import DIRECTIONS, N, S, E, W
+from utils.constants import DIRECTIONS, N, S, E, W
 
 class Factory:
     def generate_items():

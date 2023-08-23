@@ -1,5 +1,5 @@
 import re
-from constants import POSSIBLE_COMMANDS
+from utils.constants import POSSIBLE_COMMANDS
 
 class CommandParser():
   def __init__(self):

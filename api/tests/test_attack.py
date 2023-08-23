@@ -1,15 +1,13 @@
-from constants import MORNING
-from ..player_actions.attack import Attack
+from player_actions.attack import Attack
 import pytest
+
 
 @pytest.mark.parametrize("arguments,expected_target", [
     ({'target': 'my_test_target'}, 'my_test_target'),
     ({}, None)
 ])
 def test_parse_returns_correct_target_value(arguments, expected_target):
-    attack = Attack()
-
-    target, weapons = attack.parse(None, arguments)
+    target, weapons = Attack.parse(None, arguments)
 
     assert expected_target == target
 
@@ -19,8 +17,6 @@ def test_parse_returns_correct_target_value(arguments, expected_target):
     ({}, ['fist'])
 ])
 def test_parse_returns_correct_weapons_value(arguments, expected_weapons):
-    attack = Attack()
-
-    target, weapons = attack.parse(None, arguments)
+    target, weapons = Attack.parse(None, arguments)
 
     assert expected_weapons == weapons

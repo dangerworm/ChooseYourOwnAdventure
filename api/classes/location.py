@@ -1,5 +1,5 @@
-from constants import DIRECTIONS
 from classes.creature import Creature
+from utils.constants import DIRECTIONS
 
 class Location:
     def __init__(self, id, time_based_descriptions, observations, exits, items, x, y, creature_time_probabilities):

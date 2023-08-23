@@ -1,4 +1,4 @@
-from ..player_actions.command_parser import CommandParser
+from player_actions.command_parser import CommandParser
 import pytest
 
 @pytest.mark.parametrize("user_input,expected_command,expected_arguments",[
