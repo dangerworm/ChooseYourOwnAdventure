@@ -30,7 +30,17 @@ class Attack():
         """
         
         attack_target_names = [creature.name.lower() for creature in game.player.location.creatures]
+
+        target_type = 'item'
+        if len(attack_target_names) > 0:
+            target_type = 'creature'
+
         attack_target_names += [item.name.lower() for item in game.player.location.items]
+
+        is_creature = False
+        attack_targets = [creature for creature in game.player.location.creatures if creature.name.lower() == target.lower() and creature.hit_points > 0]
+        if len(attack_targets) > 0:
+            is_creature = True
         
         item_names = [item.name.lower() for item in game.player.items]
         item_names += [item.name.lower() for item in game.player.location.items]
@@ -59,42 +69,45 @@ class Attack():
             else:
                 message = 'You do not have those items.'
         
-        return valid, message
+        return valid, message, is_creature
         
 
-    def act (game, target, weapons):
+    def act (game, target, is_creature, weapons):
         """
         Function to attack a target (e.g. enemy, object such as a door, etc.). 
         Takes 2 arguments:
         1) game
         2) target  
         """
-        
-        #get the game object that matches the free text word for the target creature
-        is_creature = False
 
-        attack_targets = [creature for creature in game.player.location.creatures if creature.name.lower() == target.lower() and creature.hit_points > 0]
-        if len(attack_targets) > 0:
-            is_creature = True
+        attack_targets = []
+        attack_weapons = []
 
-        attack_targets += [item for item in game.player.location.items if item.name.lower() == target.lower()]
-        
-        if len(attack_targets) == 0:
-            attack_targets = [creature for creature in game.player.location.creatures if creature.name.lower() == target.lower()]
+        if target == 'game_player':
+            attack_targets = [game.player]
+        else:
+            # Get the game object(s) that match the free text word for the target creature
+            attack_targets = [creature for creature in game.player.location.creatures if creature.name.lower() == target.lower() and creature.hit_points > 0]
+            attack_targets += [item for item in game.player.location.items if item.name.lower() == target.lower()]
+            
+            if len(attack_targets) == 0:
+                attack_targets = [creature for creature in game.player.location.creatures if creature.name.lower() == target.lower()]
 
-        attack_weapons = [item for item in game.player.items if item.name.lower() in weapons]
-        attack_weapons += [item for item in game.player.location.items if item.name.lower() in weapons]
+            attack_weapons = [item for item in game.player.items if item.name.lower() in weapons]
+            attack_weapons += [item for item in game.player.location.items if item.name.lower() in weapons]
 
         if weapons[0] == 'fist':
             attack_weapons = [type('',(object,),{'attack_points': 1})()]
 
-        was_dead = attack_targets[0].hit_points <= 0
+        thing_to_hit = attack_targets[0]
+
+        was_dead = thing_to_hit.hit_points <= 0
 
         for weapon in attack_weapons:
-            attack_targets[0].hit_points -= weapon.attack_points
+            thing_to_hit.hit_points -= weapon.attack_points
 
-        hp = attack_targets[0].hit_points
-        start_hp = attack_targets[0].starting_hit_points
+        hp = thing_to_hit.hit_points
+        start_hp = thing_to_hit.starting_hit_points
 
         first_hits = []
         weakened = []
@@ -111,6 +124,7 @@ class Attack():
             bloodied = ['bloodied ', 'battered ', 'mutilated ']
             death = 'death'
             killed = 'killed'
+
         else:
             # Item adjectives
             first_hits = ['hard ', 'sturdy ', 'solid ']
@@ -122,11 +136,13 @@ class Attack():
 
         adjective = ''
         extra_text = ''
+        is_dead = was_dead
 
         if was_dead:
             adjective =  'dead '
         elif hp <= 0:
             extra_text = f' and {killed} it.'
+            is_dead = True
         elif hp < round(start_hp * 0.25, 0):
             adjective = choice(bloodied)
             extra_text = f', {death} is near...'
@@ -138,4 +154,14 @@ class Attack():
         else:
             adjective = choice(first_hits)
 
-        return f'You attacked the {adjective}{target} with your {", ".join(weapons)}{extra_text}'
+        if target == 'game_player':
+            hp_comment = ''
+            if hp <= 0:
+                hp_comment = 'You are dead'
+            else:
+                hp_comment = f'You now have {hp} health'
+            message = f'It hit you back with its {", ".join(weapons)} and you lost {start_hp - hp} health. {hp_comment}'
+            return thing_to_hit, is_dead, message
+        else:
+            message = f'You attacked the {adjective}{target} with your {", ".join(weapons)}{extra_text}'
+            return thing_to_hit, is_dead, message

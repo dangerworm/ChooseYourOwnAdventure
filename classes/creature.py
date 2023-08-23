@@ -23,9 +23,17 @@ class Creature(CreatureType):
 
     def get_defensive_roll(self):
         return super().get_defensive_roll() * self.level
+    
+    def choose_weapons(self):
+        if len(self.items) == 0:
+            return ['fist']
+
+        items_ordered_by_best_attack_points = \
+            self.items.sort(lambda item: item.attack_points, reverse=True)
+        
+        return items_ordered_by_best_attack_points[:2]
 
     def generate(creature_type):
-        
         return Creature(1, creature_type.name, creature_type.description, creature_type.characteristics, creature_type.observations, creature_type.weaknesses, 
                         creature_type.resistances, creature_type.immunities, given_name='', items=[], adornments=[], 
                         hit_points=random.randint(*creature_type.characteristics.hit_points_range),

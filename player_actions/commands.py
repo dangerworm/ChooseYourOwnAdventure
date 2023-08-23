@@ -6,9 +6,17 @@ from player_actions.take import Take
 def run_command(game, command, arguments):
   if command == 'attack':
     target, weapons = Attack.parse(game, arguments)
-    valid, message = Attack.can_act(game, target, weapons)
+    valid, message, is_creature = Attack.can_act(game, target, weapons)
     if valid:
-       message = Attack.act(game, target, weapons)
+      thing_hit, is_dead, message = Attack.act(game, target, is_creature, weapons)
+
+      # Allow creature to attack back
+      if is_creature and not is_dead:
+        target = 'game_player'
+        weapons = thing_hit.choose_weapons()
+        thing_hit, is_dead, additional_message = Attack.act(game, target, is_creature, weapons)
+        message += '\n' + additional_message
+
     return GameResponse(game.player.id, message, None)
   
   elif command == 'cast':

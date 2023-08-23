@@ -26,5 +26,13 @@ def test_get_command_and_arguments_from_input_does_not_return_more_than_two_weap
     
     assert expected_arguments == output_arguments
 
+@pytest.mark.parametrize("user_input,expected_command",[
+    ("attack the troll with a sword and hammer", "attack"),
+])
+def test_get_command_and_arguments_from_input_gets_a_command(user_input,expected_command):
+    parser = CommandParser()
 
-#def test_check_first_word_gets_a_command():
+    output_command, output_arguments = parser.get_command_and_arguments_from_input(user_input)
+    
+    assert expected_command == output_command
+
