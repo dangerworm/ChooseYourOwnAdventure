@@ -14,6 +14,13 @@ CORS(app)
 
 game = Game()
 
+from repositories.effects_repository import EffectsRepository
+
+@app.route('/effects', methods=['GET'])
+def effects():
+    effects_repo = EffectsRepository()
+    effects = effects_repo.get_effects()
+    return Response(json.dumps(effects), status=200, mimetype='application/json')
 
 @app.route('/', methods=['GET'])
 def welcome():
