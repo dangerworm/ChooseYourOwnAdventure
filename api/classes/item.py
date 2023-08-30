@@ -1,9 +1,10 @@
 class Item:
-    def __init__(self, id, name, description, observations, effects, contains, value, hit_points, attack_points, uses_count):
+    def __init__(self, id, name, description, observations, weight, effects, contains, value, hit_points, attack_points, uses_count):
         self.id = id
         self.name = name
         self.description = description
         self.observations = observations
+        self.weight = weight
         self.effects = effects
         self.contains = contains
         self.value = value
