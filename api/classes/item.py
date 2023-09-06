@@ -13,12 +13,6 @@ class Item:
         self.attack_points = attack_points
         self.uses_count = uses_count
 
-    def on_take(self):
-        print(f"You have picked up {self.name}")
-
-    def on_drop(self):
-        print(f"You have dropped {self.name}")
-
     def __str__(self):
         return f"{self.description}"
 

@@ -1,17 +1,10 @@
+from player_actions.action import Action
 from random import choice
 
-class Take():
+class Take(Action):
     """
     Static class so does not require __init__ or any attributes to be passed in.
     """
-
-
-    def parse(game, arguments):
-        item_exists = 'target' in arguments and len(arguments['target']) > 0        
-        if item_exists:
-            return arguments['target']
-        else:
-            pass
         
     def can_act(game, item):
         """

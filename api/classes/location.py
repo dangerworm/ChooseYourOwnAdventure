@@ -22,7 +22,7 @@ class Location:
     def location_summary(self, time_of_day):
         output = self.time_based_descriptions[time_of_day] + '.\n'
         output += 'There are exits to the '
-        output += ', '.join([DIRECTIONS[path] for path in self.exits]) + '.\n'
+        output += ', '.join([DIRECTIONS[exit] for exit in self.exits]) + '.\n'
         
         if len(self.items) > 0:
             output += self.observations_and_items()

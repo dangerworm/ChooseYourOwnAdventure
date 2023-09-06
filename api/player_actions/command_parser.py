@@ -1,5 +1,5 @@
 import re
-from utils.constants import POSSIBLE_COMMANDS
+from utils.constants import COMMAND_ARGUMENTS
 
 class CommandParser():
   def __init__(self):
@@ -31,18 +31,18 @@ class CommandParser():
 
     command = ''
     arguments = {}
-    print(user_input) #test print
     matches = self.find_first_match(user_input) #this is a list
+    print (matches)
     if len(matches) > 0:
       for word in matches:
-        if word in POSSIBLE_COMMANDS.keys():
+        if word in COMMAND_ARGUMENTS.keys():
           command = word
           break
           
-      if POSSIBLE_COMMANDS[command] == 1:
+      if COMMAND_ARGUMENTS[command] == 1:
         arguments['target'] = matches[-1]
 
-      elif POSSIBLE_COMMANDS[command] == 2:            
+      elif COMMAND_ARGUMENTS[command] == 2:            
         arguments['target'] = matches[1]
         arguments['weapons'] = matches[2:]
         

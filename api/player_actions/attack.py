@@ -1,40 +1,20 @@
+from player_actions.action import Action
 from random import choice
 
-class Attack():
+class Attack(Action):
     """
     Static class so does not require __init__ or any attributes to be passed in.
     """
 
-
-    def parse(game, arguments):
-        target_exists = 'target' in arguments and len(arguments['target']) > 0        
-        if target_exists:
-            target = arguments['target']
-        else:
-            target = None
-
-        weapons_exists = 'weapons' in arguments and len(arguments['weapons']) > 0
-
-        if weapons_exists:
-            return target, [weapon.lower() for weapon in arguments['weapons']]
-        else:
-            return target, ['fist']
-
-
     def can_act(game, target, weapons):
         """
-        Function to check whether the play has any equipment (weapons etc.) that 
+        Function to check whether the player has any equipment (weapons etc.) that 
         can be used to attack a target, and whether the target is in the same
         location, to be attacked.
         
         """
         
         attack_target_names = [creature.name.lower() for creature in game.player.location.creatures]
-
-        target_type = 'item'
-        if len(attack_target_names) > 0:
-            target_type = 'creature'
-
         attack_target_names += [item.name.lower() for item in game.player.location.items]
 
         is_creature = False

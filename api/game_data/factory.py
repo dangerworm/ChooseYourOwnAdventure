@@ -9,15 +9,15 @@ from utils.constants import DIRECTIONS, N, S, E, W
 class Factory:
     def generate_items():
         return [
-            Item(1, "Sword", "A sharp sword", [], [], [], 10, 100, 20, -1),
-            Item(2, "Shield", "A sturdy shield", [], [], [], 10, 100, 3, -1),
-            Item(3, "Potion", "A healing potion", [], [], [], 10, 100, 3, -1),
-            Item(4, "Key", "A key", [], [], [], 10, 100, 3, -1),
-            Item(5, "Gold", "A gold coin", [], [], [], 10, 100, 3, -1),
-            Item(6, "Diamond", "A diamond", [], [], [], 10, 100, 3, -1),
-            Item(7, "Barrel", "A wooden barrel", ["You can see something inside the barrel"], [], [1,2], 10, 100, 3, -1),
-            Item(8, "Chest", "An iron chest", ["You see a sword, a shield, and a pouch"], [], [1,2,9], 15, 200, 15, -1),
-            Item(9, "Pouch", "A cloth pouch", ["You see a potion inside"], [], [3], 1, 2, 1, -1)
+            Item(1, "Sword", "A sharp sword", [], 5, [], [], 10, 100, 20, -1),
+            Item(2, "Shield", "A sturdy shield", [], 5, [], [], 10, 100, 3, -1),
+            Item(3, "Potion", "A healing potion", [], 5, [], [], 10, 100, 3, -1),
+            Item(4, "Key", "A key", [], 5, [], [], 10, 100, 3, -1),
+            Item(5, "Gold", "A gold coin", [], 5, [], [], 10, 100, 3, -1),
+            Item(6, "Diamond", "A diamond", [], 5, [], [], 10, 100, 3, -1),
+            Item(7, "Barrel", "A wooden barrel", ["You can see something inside the barrel"], 5, [], [1,2], 10, 100, 3, -1),
+            Item(8, "Chest", "An iron chest", ["You see a sword, a shield, and a pouch"], 5, [], [1,2,9], 15, 200, 15, -1),
+            Item(9, "Pouch", "A cloth pouch", ["You see a potion inside"], 5, [], [3], 1, 2, 1, -1)
         ]
     
     def generate_creature_types():

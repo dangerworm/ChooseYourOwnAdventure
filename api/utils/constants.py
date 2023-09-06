@@ -15,7 +15,7 @@ DIRECTIONS = {
     3: 'west'
 }
 
-DIRECTION_NAMES = {
+DIRECTION_INDICES = {
     'north': 0,
     'east': 1,
     'south': 2,
@@ -23,7 +23,7 @@ DIRECTION_NAMES = {
 }
 
 #Number below represents the number of arguments
-POSSIBLE_COMMANDS = {
+COMMAND_ARGUMENTS = {
    'attack': 2,
    'cast': 2,
    'drop': 1,

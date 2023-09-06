@@ -76,22 +76,6 @@ def command():
     if command != '':
         game_response = run_command(game, command, arguments)
 
-    elif command == 'look':
-        game_response = GameResponse(
-            game.player.id, game.player.location.description, None)
-
-    elif command == 'go':
-        # Get the location name from the arguments in data
-        location_name = arguments['target']
-        
-        # Find all locations with location_name in their name
-        locations = [location for location in game.locations if location_name.lower() in location.name.lower()]
-
-        if len(locations) == 1:
-            game.player.location = locations[0]
-            game_response = GameResponse(
-                game.player.id, game.player.location.description, None)
-
     else:
         game_response = GameResponse(
             game.player.id, 'What do you want to do?', None)
