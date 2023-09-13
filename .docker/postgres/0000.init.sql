@@ -1,1 +1,5 @@
 GRANT ALL PRIVILEGES ON DATABASE postgres TO postgres;
+
+CREATE SCHEMA "common";
+CREATE SCHEMA "setup";
+CREATE SCHEMA "gameplay";

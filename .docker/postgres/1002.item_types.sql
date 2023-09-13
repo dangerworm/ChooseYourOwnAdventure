@@ -1,4 +1,4 @@
-INSERT INTO "public"."items"
+INSERT INTO "setup"."item_types"
   ("name", "description", "observations", "weight", "value", "hit_points", "starting_hit_points", "attack_points", "uses_count")
 VALUES
   ('Sword', 'A sharp sword', ARRAY ['It shines in the light', 'It is very sharp'], 400, 10, 100, 100, 20, -1),
@@ -10,16 +10,16 @@ VALUES
   ('Chest', 'An iron chest', ARRAY ['It is extremely heavy'], 750, 50, 30, 30, 40, -1),
   ('Pouch', 'A cloth pouch', NULL, 5, 1, 1, 1, 0, -1);
 
-INSERT INTO "public"."contained_items" 
-  ("item_id", "contained_item_id")
+INSERT INTO "setup"."contained_item_types" 
+  ("item_type_id", "contained_item_type_id", "contained_item_type_amount")
 VALUES
-  (6, 1),
-  (7, 2),
-  (7, 8),
-  (8, 3);
+  (6, 1, 2),
+  (7, 2, 1),
+  (7, 8, 1),
+  (8, 3, 10);
 
-INSERT INTO "public"."item_effects" 
-  ("item_id", "effect_id")
+INSERT INTO "setup"."item_type_effects" 
+  ("item_type_id", "effect_id")
 VALUES
   (1, 3),
   (3, 1);
