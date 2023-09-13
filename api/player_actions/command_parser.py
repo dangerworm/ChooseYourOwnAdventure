@@ -42,7 +42,7 @@ class CommandParser():
       if COMMAND_ARGUMENTS[command] == 1:
         arguments['target'] = matches[-1]
 
-      elif COMMAND_ARGUMENTS[command] == 2:            
+      elif COMMAND_ARGUMENTS[command] == 2:
         arguments['target'] = matches[1]
         arguments['weapons'] = matches[2:]
         

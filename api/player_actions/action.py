@@ -17,3 +17,15 @@ class Action:
             return target, [weapon.lower() for weapon in arguments['weapons']]
         else:
             return target, ['fist']
+        
+    def get_available_targets(game, target):
+        
+        target_names = [creature.name.lower() for creature in game.player.location.creatures]
+        target_names += [item.name.lower() for item in game.player.location.items]
+
+        is_creature = False
+        action_targets = [creature for creature in game.player.location.creatures if creature.name.lower() == target.lower() and creature.hit_points > 0]
+        if len(action_targets) > 0:
+            is_creature = True
+
+        return target_names, is_creature

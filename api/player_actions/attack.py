@@ -14,13 +14,7 @@ class Attack(Action):
         
         """
         
-        attack_target_names = [creature.name.lower() for creature in game.player.location.creatures]
-        attack_target_names += [item.name.lower() for item in game.player.location.items]
-
-        is_creature = False
-        attack_targets = [creature for creature in game.player.location.creatures if creature.name.lower() == target.lower() and creature.hit_points > 0]
-        if len(attack_targets) > 0:
-            is_creature = True
+        attack_target_names, is_creature = Action.get_available_targets(game, target)
         
         item_names = [item.name.lower() for item in game.player.items]
         item_names += [item.name.lower() for item in game.player.location.items]
@@ -55,9 +49,11 @@ class Attack(Action):
     def act (game, target, is_creature, weapons):
         """
         Function to attack a target (e.g. enemy, object such as a door, etc.). 
-        Takes 2 arguments:
+        Takes 4 arguments:
         1) game
-        2) target  
+        2) target 
+        3) is_creature (boolean) 
+        4) weapons
         """
 
         attack_targets = []
