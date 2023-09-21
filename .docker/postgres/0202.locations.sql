@@ -1,12 +1,10 @@
 CREATE TABLE "setup"."locations" (
     "id" INT GENERATED ALWAYS AS IDENTITY,
-    "name" TEXT NOT NULL,
     "time_based_descriptions" TEXT[] NOT NULL,
     "exits" INT[] NOT NULL,
     "observations" TEXT NULL,
     "x" INT NULL,
     "y" INT NULL,
-    "creature_time_probabilities" DECIMAL[] NULL,
     CONSTRAINT "locations_pkey" PRIMARY KEY ("id")
 );
 
