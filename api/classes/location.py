@@ -2,15 +2,15 @@ from classes.creature import Creature
 from utils.constants import DIRECTIONS
 
 class Location:
-    def __init__(self, id, time_based_descriptions, observations, exits, items, x, y, creature_time_probabilities):
+    def __init__(self, id, time_based_descriptions, observations, exits, x, y):
         self.id = id
         self.time_based_descriptions = time_based_descriptions
         self.observations = observations
         self.exits = exits
-        self.items = items
+        #self.items = items
         self.x = x
         self.y = y
-        self.creature_time_probabilities = creature_time_probabilities
+        #self.creature_time_probabilities = creature_time_probabilities
         self.creatures = []
 
     def determine_creature_alive_or_dead(self, creature):

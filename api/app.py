@@ -15,6 +15,8 @@ CORS(app)
 game = Game()
 
 from repositories.effects_repository import EffectsRepository
+from repositories.locations_repository import LocationsRepository
+
 
 @app.route('/effects', methods=['GET'])
 def effects():
