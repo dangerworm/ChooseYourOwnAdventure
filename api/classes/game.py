@@ -1,6 +1,8 @@
 
 from classes.player import Player
 from repositories.locations_repository import LocationsRepository
+from repositories.items_repository import ItemsRepository
+from repositories.creature_types_repository import CreatureTypesRepository
 from random import randint
 
 from utils.constants import DIRECTIONS, N, S, E, W, MORNING, AFTERNOON, EVENING, NIGHT
@@ -8,13 +10,17 @@ from utils.constants import DIRECTIONS, N, S, E, W, MORNING, AFTERNOON, EVENING,
 class Game:
     def __init__(self):
         self.location_repository = LocationsRepository()
+        self.items_repository = ItemsRepository()
+        self.creature_types_repository = CreatureTypesRepository()
         self.time_of_day = MORNING
-        #self.items = Factory.generate_items()
-        #self.creature_types = Factory.generate_creature_types()
-        #self.locations = Factory.generate_locations(self.items)
-        records = self.location_repository.get_all()
-
-            #location.spawn_creatures(self)
+        
+        self.items = self.items_repository.get_all()
+        self.creature_types = self.creature_types_repository.get_all()
+        self.locations = self.location_repository.get_all()
+        
+        for location in self.locations.values():
+            location.spawn_creatures(self)
+            
         self.player = None
 
     def setup_player(self, name, choose_stats):

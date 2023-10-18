@@ -4,7 +4,7 @@ from player_actions.command_parser import CommandParser
 from flask import Flask, request, Response
 from flask_cors import CORS
 from player_actions.commands import run_command
-from utils.game import Game
+from api.classes.game import Game
 from classes.game_response import GameResponse
 
 from utils.constants import MORNING, AFTERNOON, EVENING, NIGHT

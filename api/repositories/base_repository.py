@@ -20,3 +20,21 @@ class BaseRepository():
         records = cursor.fetchall()
         return records
   
+  def create_id_dictionary(self, list_records):
+      """
+      method to take in a list of lists, and convert this to a dictionary.
+      key = entity_id
+      values = list of IDs
+      """
+
+      dict_location_to_id = {}
+      number_of_records = len(list_records)
+      for record_number in range(number_of_records):
+        record = list_records[record_number]
+        entity_id, id = record[:2]
+
+        if not entity_id in dict_location_to_id.keys():
+          dict_location_to_id[entity_id] = []
+        dict_location_to_id[entity_id].append(id)
+    
+      return dict_location_to_id

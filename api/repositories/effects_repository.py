@@ -10,10 +10,10 @@ class EffectsRepository(BaseRepository):
     def get_all(self):
       query = "select id, name, description, buffs, debuffs from common.effects"
       list_records = super().get_all(query)
-      return self.create_objects(list_records)
+      return self.create_entities(list_records)
 
   
-    def create_objects(self,list_records):
+    def create_entities(self,list_records):
       dict_records = {}
 
       number_of_records = len(list_records)
