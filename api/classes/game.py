@@ -7,20 +7,15 @@ from random import randint
 
 from utils.constants import DIRECTIONS, N, S, E, W, MORNING, AFTERNOON, EVENING, NIGHT
 
+
 class Game:
-    def __init__(self):
-        self.location_repository = LocationsRepository()
-        self.items_repository = ItemsRepository()
-        self.creature_types_repository = CreatureTypesRepository()
-        self.time_of_day = MORNING
-        
-        self.items = self.items_repository.get_all()
-        self.creature_types = self.creature_types_repository.get_all()
-        self.locations = self.location_repository.get_all()
-        
-        for location in self.locations.values():
-            location.spawn_creatures(self)
-            
+    def __init__(self, items, creature_types, locations, time_of_day = MORNING):
+        #call game_setup_workflow - to be added
+        self.items = items
+        self.creature_types = creature_types
+        self.locations = locations
+        self.time_of_day = time_of_day
+
         self.player = None
 
     def setup_player(self, name, choose_stats):

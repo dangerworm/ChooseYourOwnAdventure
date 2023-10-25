@@ -25,14 +25,37 @@ class LocationsRepository(BaseRepository):
       
       return entities
     
-    def create_entities(self,list_records):
+    def get_by_id(self, id):
+      query = "select id, time_based_descriptions, observations, exits, x, y from setup.locations WHERE id = {0}"
+      record = super().get_by_id(query, id)
+      entity = self.create_entity(record)
+
+      #list_records here contains creature types in the location
+      query = "select creature_type_id from public.location_creature_types where location_id = {0}"
+      list_records = super().get_all(query, id)
+      entity.creature_types = super().create_id_list(list_records)
+      
+      #list_records here contains items in the location
+      query = "select item_id from public.location_items where location_id = {0}"
+      list_records = super().get_all(query, id)
+      entity.items = super().create_id_list(list_records)
+
+      return entity #populated location
+
+    def create_entities(self, list_records):
       dict_records = {}
 
       number_of_records = len(list_records)
       for record_number in range(number_of_records):
         record = list_records[record_number]
-        object = Location(*record)
+        object = self.create_entity(record)
         dict_records[object.id] = object
       
       return dict_records
 
+    def create_entity(self, record):
+      """
+      Method to return the instance of a specific location
+      """
+      object = Location(*record)
+      return object

@@ -19,6 +19,15 @@ class BaseRepository():
         cursor.execute(query)
         records = cursor.fetchall()
         return records
+      
+  def get_by_id(self, query, id):
+      """
+      Method to get specific records from a table based on the id.
+      """
+      with self.connection.cursor() as cursor:
+        cursor.execute(query, id)
+        records = cursor.fetchall()
+        return records
   
   def create_id_dictionary(self, list_records):
       """
@@ -38,3 +47,9 @@ class BaseRepository():
         dict_location_to_id[entity_id].append(id)
     
       return dict_location_to_id
+  
+  def create_id_list(self, list_records):
+     """
+     Method to create a list of all id's rather than a list of lists
+     """
+     return [record[0] for record in list_records]

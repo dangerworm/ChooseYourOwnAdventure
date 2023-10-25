@@ -53,14 +53,14 @@ class Location:
         else:
             return ''
 
-    def spawn_creatures(self, game):
+    def spawn_creatures(self, time_of_day, creature_types):
         creature_type_spawned_ids = []
 
         for creature_probability in self.creature_time_probabilities:
-            if creature_probability.should_spawn_creature(game.time_of_day):
+            if creature_probability.should_spawn_creature(time_of_day):
                 creature_type_spawned_ids.append(creature_probability.creature_type_id)
                     
-        creature_types = [creature_type for creature_type in game.creature_types if creature_type.id in creature_type_spawned_ids]
+        creature_types = [creature_type for creature_type in creature_types if creature_type.id in creature_type_spawned_ids]
 
         self.creatures = [Creature.generate(creature_type) for creature_type in creature_types]
     
