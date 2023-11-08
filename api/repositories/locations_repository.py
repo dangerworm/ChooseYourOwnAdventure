@@ -1,4 +1,3 @@
-
 from repositories.base_repository import BaseRepository
 from classes.location import Location
 
@@ -11,16 +10,18 @@ class LocationsRepository(BaseRepository):
       list_records = super().get_all(query)
       entities = self.create_entities(list_records)
       
-      query = "select location_id, creature_type_id from public.location_creature_types"
+      query = "select location_id, creature_type_id, creature_type_count from setup.location_creature_types"
       list_records = super().get_all(query)
-      dict_location_to_creature_type_id = super().create_id_dictionary(list_records)
+      dict_location_to_creature_type_id = super().create_id_count_dictionary(list_records)
     
-      query = "select location_id, item_id from public.location_items"
+      query = "select location_id, item_type_id, item_type_count from setup.location_item_types"
       list_records = super().get_all(query)
-      dict_location_to_item_id = super().create_id_dictionary(list_records)
+      dict_location_to_item_id = super().create_id_count_dictionary(list_records)
 
-      for location_id in entities.keys():
+      for location_id in dict_location_to_creature_type_id.keys():
         entities[location_id].creature_types = dict_location_to_creature_type_id[location_id]
+      
+      for location_id in dict_location_to_item_id.keys():
         entities[location_id].items = dict_location_to_item_id[location_id]
       
       return entities

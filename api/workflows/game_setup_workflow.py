@@ -16,11 +16,11 @@ class GameSetupWorkflow:
     self.items_repository = ItemsRepository()
     self.creature_types_repository = CreatureTypesRepository()
 
-    def create_new_game(self):
-      items = self.items_repository.get_all()
-      creature_types = self.creature_types_repository.get_all()
-      locations = self.location_repository.get_all()
-      
-      game = Game(items, creature_types, locations)
+  def create_new_game(self):
+    items = self.items_repository.get_all()
+    creature_types = self.creature_types_repository.get_all()
+    locations = self.location_repository.get_all()
 
-      return game
+    game = Game(items, creature_types, locations)
+
+    return game

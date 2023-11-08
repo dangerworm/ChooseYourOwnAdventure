@@ -1,28 +1,19 @@
 import json
+from workflows.game_setup_workflow import GameSetupWorkflow
 from player_actions.command_parser import CommandParser
 
 from flask import Flask, request, Response
-from flask_cors import CORS
+from flask_cors import CORS, cross_origin
 from player_actions.commands import run_command
-from api.classes.game import Game
 from classes.game_response import GameResponse
 
 from utils.constants import MORNING, AFTERNOON, EVENING, NIGHT
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, resources={r"/*": {"origins": "*"}})
 
-game = Game()
-
-from repositories.effects_repository import EffectsRepository
-from repositories.locations_repository import LocationsRepository
-
-
-@app.route('/effects', methods=['GET'])
-def effects():
-    effects_repo = EffectsRepository()
-    effects = effects_repo.get_effects()
-    return Response(json.dumps(effects), status=200, mimetype='application/json')
+game_setup_workflow = GameSetupWorkflow()
+game = game_setup_workflow.create_new_game()
 
 @app.route('/', methods=['GET'])
 def welcome():

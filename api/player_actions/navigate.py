@@ -35,8 +35,8 @@ class Navigate(Action):
         direction_index = DIRECTION_INDICES[target]
 
         current_location = game.player.location
-        x_locations = [location for location in game.locations if location.x == current_location.x]
-        y_locations = [location for location in game.locations if location.y == current_location.y]
+        x_locations = [location for location in game.locations.values() if location.x == current_location.x]
+        y_locations = [location for location in game.locations.values() if location.y == current_location.y]
         new_location = None
 
         if direction_index == N:

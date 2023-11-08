@@ -11,6 +11,7 @@ CREATE TABLE "setup"."locations" (
 CREATE TABLE "setup"."location_creature_types" (
     "location_id" INT NOT NULL,
     "creature_type_id" INT NOT NULL,
+    "creature_type_count" INT NOT NULL,
     CONSTRAINT "location_creature_types_pkey" PRIMARY KEY ("location_id", "creature_type_id"),
     CONSTRAINT "location_creature_types_location_id_fkey" FOREIGN KEY ("location_id") REFERENCES "setup"."locations"("id"),
     CONSTRAINT "location_creature_types_creature_type_id_fkey" FOREIGN KEY ("creature_type_id") REFERENCES "setup"."creature_types"("id")

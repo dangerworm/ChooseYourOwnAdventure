@@ -36,17 +36,38 @@ class BaseRepository():
       values = list of IDs
       """
 
-      dict_location_to_id = {}
+      dict_entity_to_id = {}
       number_of_records = len(list_records)
       for record_number in range(number_of_records):
         record = list_records[record_number]
         entity_id, id = record[:2]
 
-        if not entity_id in dict_location_to_id.keys():
-          dict_location_to_id[entity_id] = []
-        dict_location_to_id[entity_id].append(id)
+        if not entity_id in dict_entity_to_id.keys():
+          dict_entity_to_id[entity_id] = []
+
+        dict_entity_to_id[entity_id].append(id)
     
-      return dict_location_to_id
+      return dict_entity_to_id
+  
+  def create_id_count_dictionary(self, list_records):
+      """
+      method to take in a list of lists, and convert this to a dictionary.
+      key = entity_id
+      values = list of IDs
+      """
+
+      dict_entity_to_id_with_count = {}
+      number_of_records = len(list_records)
+      for record_number in range(number_of_records):
+        record = list_records[record_number]
+        entity_id, id, count = record[:3]
+
+        if not entity_id in dict_entity_to_id_with_count.keys():
+          dict_entity_to_id_with_count[entity_id] = {}
+
+        dict_entity_to_id_with_count[entity_id][id] = count
+    
+      return dict_entity_to_id_with_count
   
   def create_id_list(self, list_records):
      """

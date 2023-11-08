@@ -235,22 +235,11 @@ VALUES
   17--y coord
 );
 
-INSERT INTO "setup"."location_item_types"
-(
-  "location_id",
-  "item_type_id",
-  "item_type_count"
-)
-VALUES
-  (1, 8, 1),
-  (1, 1, 1),
-  (2, 1, 1);
-
-
 INSERT INTO "setup"."location_creature_types"
 (
   "location_id",
-  "creature_type_id"
+  "creature_type_id",
+  "creature_type_count"
 )
 VALUES
   (1, 1),
@@ -270,3 +259,14 @@ VALUES
   (15, 1),
   (16, 2),
   (17, 1);
+  
+INSERT INTO "setup"."location_item_types"
+(
+  "location_id",
+  "item_type_id",
+  "item_type_count"
+)
+VALUES
+  (1, 8, 1),
+  (1, 1, 1),
+  (2, 1, 1);

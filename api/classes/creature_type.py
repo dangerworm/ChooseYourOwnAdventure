@@ -1,17 +1,23 @@
-import random
-
 class CreatureType:
-    def __init__(self, id, name, description, characteristics, observations, weaknesses, resistances, immunities):
-        self.id = id
-        self.name = name
-        self.description = description
-        self.characteristics = characteristics
-        self.observations = observations
-        self.weaknesses = weaknesses
-        self.resistances = resistances
-        self.immunities = immunities
+    def __init__(self, *args):
+        if len(args) == 4:
+            self.id = args[0]
+            self.name = args[1]
+            self.description = args[2]
+            self.observations = args[3]
+            return
 
-    def __repr__(self):
+        if len(args) == 8:
+            self.id = args[0]
+            self.name = args[1]
+            self.description = args[2]
+            self.characteristics = args[3]
+            self.observations = args[4]
+            self.weaknesses = args[5]
+            self.resistances = args[6]
+            self.immunities = args[7]
+
+    def __repr__(self): 
         return f'Creature {self.name}'
 
     # def get_defensive_roll(self):

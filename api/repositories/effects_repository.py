@@ -1,5 +1,3 @@
-import psycopg2
-
 from repositories.base_repository import BaseRepository
 from classes.effect import Effect
 

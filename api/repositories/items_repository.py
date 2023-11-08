@@ -1,5 +1,3 @@
-import psycopg2
-
 from repositories.base_repository import BaseRepository
 from classes.item import Item
 
@@ -8,20 +6,22 @@ class ItemsRepository(BaseRepository):
         super().__init__()
 
     def get_all(self):
-      query = "select id, name, description, observations, weight, effects, contains, value, hit_points, attack_points, uses_count from setup.item"
+      query = "select id, name, description, observations, weight, value, hit_points, attack_points, uses_count from setup.item_types"
       list_records = super().get_all(query)
       entities = self.create_entities(list_records)
 
-      query = "select item_id, contained_item_id from public.contained_items"
+      query = "select item_type_id, contained_item_type_id from setup.contained_item_types"
       list_records = super().get_all(query)
       dict_item_to_contained_item_id = super().create_id_dictionary(list_records)
     
-      query = "select item_id, effect_id from public.item_effects"
+      query = "select item_type_id, effect_id from setup.item_type_effects"
       list_records = super().get_all(query)
       dict_item_to_effect_id = super().create_id_dictionary(list_records)
 
-      for item_id in entities.keys():
-        entities[item_id].contained_items = dict_item_to_contained_item_id[item_id]
+      for item_id in dict_item_to_contained_item_id.keys():
+        entities[item_id].contains = dict_item_to_contained_item_id[item_id]
+
+      for item_id in dict_item_to_effect_id.keys():
         entities[item_id].effects = dict_item_to_effect_id[item_id]
       
       return entities

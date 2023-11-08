@@ -53,5 +53,5 @@ class Game:
 
         self.player = Player(1, name, 'Human', None, [], [], [], [], 'Matt', [], [],
                              health, agility, charisma, endurance, intelligence, 
-                             mana, perception, strength, self.locations[0], 0, 
-                             [self.locations[0]], [])
+                             mana, perception, strength, self.locations[1], 0, 
+                             [self.locations[1]], [])
