@@ -12,6 +12,9 @@ class Location:
         self.creatures = []
         self.items = []
 
+        self.creature_type_ids = {}
+        self.item_ids = {}
+
     def determine_creature_alive_or_dead(self, creature):
         if creature.hit_points <= 0:
             return f'dead {creature.description}'
@@ -53,14 +56,9 @@ class Location:
             return ''
 
     def spawn_creatures(self, game):
-        creature_type_spawned_ids = []
+        self.creatures = []
 
-        for creature_probability in self.creature_time_probabilities:
-            if creature_probability.should_spawn_creature(game.time_of_day):
-                creature_type_spawned_ids.append(creature_probability.creature_type_id)
-                    
-        creature_types = [creature_type for creature_type in game.creature_types if creature_type.id in creature_type_spawned_ids]
-
-        self.creatures = [Creature.generate(creature_type) for creature_type in game.creature_types]
-    
-    
+        for creature_type in self.creature_types:
+            if creature_type.should_spawn(game.time_of_day):
+                self.creatures.append(Creature.generate(creature_type))
+             

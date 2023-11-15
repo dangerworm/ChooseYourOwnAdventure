@@ -19,10 +19,10 @@ class LocationsRepository(BaseRepository):
       dict_location_to_item_id = super().create_id_count_dictionary(list_records)
 
       for location_id in dict_location_to_creature_type_id.keys():
-        entities[location_id].creature_types = dict_location_to_creature_type_id[location_id]
+        entities[location_id].creature_type_ids = dict_location_to_creature_type_id[location_id]
       
       for location_id in dict_location_to_item_id.keys():
-        entities[location_id].items = dict_location_to_item_id[location_id]
+        entities[location_id].item_ids = dict_location_to_item_id[location_id]
       
       return entities
     

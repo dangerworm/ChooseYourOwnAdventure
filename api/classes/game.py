@@ -16,6 +16,11 @@ class Game:
         self.locations = locations
         self.time_of_day = time_of_day
 
+        for location in locations.values():
+            location.creature_types = [creature_type 
+                                       for creature_type in self.creature_types.values()
+                                        if creature_type.id in location.creature_type_ids.keys()]
+
         self.player = None
 
     def setup_player(self, name, choose_stats):
@@ -51,7 +56,7 @@ class Game:
             charisma = randint(minStat, maxStat)
             intelligence = randint(minStat, maxStat)
 
-        self.player = Player(1, name, 'Human', None, [], [], [], [], 'Matt', [], [],
+        self.player = Player(1, name, 'Human', None, [], [], [], [], name, [], [],
                              health, agility, charisma, endurance, intelligence, 
                              mana, perception, strength, self.locations[1], 0, 
                              [self.locations[1]], [])

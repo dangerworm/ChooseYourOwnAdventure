@@ -13,7 +13,7 @@ INSERT INTO "setup"."creature_types"
   "strength_range"
   )
 VALUES
-  ('ogre', 'A ugly angry ogre', ARRAY ['The ogre appears to be carrying something', 'It looks shiny and valuable'], ARRAY[0.2, 0.4, 0.4, 0.7], ARRAY [10, 20], ARRAY [1, 5], ARRAY[1,3], ARRAY[15,20], ARRAY[1,2], ARRAY[0,1], ARRAY[0,3], ARRAY[15,25]),
+  ('ogre', 'A ugly angry ogre', ARRAY ['The ogre appears to be carrying something', 'It looks shiny and valuable'], ARRAY[1, 0.4, 0.4, 0.7], ARRAY [10, 20], ARRAY [1, 5], ARRAY[1,3], ARRAY[15,20], ARRAY[1,2], ARRAY[0,1], ARRAY[0,3], ARRAY[15,25]),
   ('fairy', 'A tiny bright fairy', ARRAY ['The fairy is incredibly fast', 'magic dust flies around you'], ARRAY[0.4, 0.7, 0.9, 0.1], ARRAY [4, 8], ARRAY [15, 20], ARRAY[15,19], ARRAY [10,15], ARRAY[22,27], ARRAY[15,21], ARRAY[14,19], ARRAY[5,9]);
 
 INSERT INTO "setup"."creature_type_immunities"

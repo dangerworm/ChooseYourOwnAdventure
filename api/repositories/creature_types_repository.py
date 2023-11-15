@@ -6,7 +6,7 @@ class CreatureTypesRepository(BaseRepository):
         super().__init__()
 
     def get_all(self):
-      query = "select id, name, description, observations from setup.creature_types"
+      query = "select id, name, description, observations, time_probabilities, hit_points_range, agility_range, charisma_range, endurance_range, intelligence_range, mana_range, perception_range, strength_range from setup.creature_types"
       list_records = super().get_all(query)
       entities = self.create_entities(list_records)
 

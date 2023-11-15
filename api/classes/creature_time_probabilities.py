@@ -8,6 +8,4 @@ class CreatureTimeProbabilities():
         self.creature_time_probabilities = creature_time_probabilities
 
     #methods
-    def should_spawn_creature(self, time_of_day):
-        probability = random.random()
-        return probability < self.creature_time_probabilities[time_of_day]
+    
