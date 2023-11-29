@@ -35,12 +35,11 @@ class Location:
         return output
 
     def observations_and_items(self):
-        observations = [str(observation) for observation in self.observations]
         items = [str(item) for item in self.items]
 
         output = ''
-        if len(observations) > 0:
-            output += ", ".join(observations) + '\n'
+        if len(self.observations) > 0:
+            output += self.observations + '\n'
 
         if len(items) > 0:
             output += f'You see {", ".join(items)} \n'

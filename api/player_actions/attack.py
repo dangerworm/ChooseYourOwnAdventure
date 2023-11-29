@@ -79,11 +79,12 @@ class Attack(Action):
 
         was_dead = thing_to_hit.hit_points <= 0
 
+        start_hp = thing_to_hit.hit_points
+        
         for weapon in attack_weapons:
             thing_to_hit.hit_points -= weapon.attack_points
 
         hp = thing_to_hit.hit_points
-        start_hp = thing_to_hit.starting_hit_points
 
         first_hits = []
         weakened = []

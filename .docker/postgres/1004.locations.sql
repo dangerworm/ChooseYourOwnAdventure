@@ -15,7 +15,7 @@ VALUES
   'It''s a calm, breezy afternoon.', 
   'It''s a quiet, warm evening.', 
   'It''s a dark, gloomy night.'], --time based descriptions
-  ARRAY []::integer[], --observations
+  'There is a shiny sword', --observations
   ARRAY [2], --exits
   4, --x coord
   1--y coord
@@ -28,7 +28,7 @@ VALUES
   'Location 2 afternoon.', 
   'Location 2 evening.',
   'Location 2 night.'], --time based descriptions
-  ARRAY []::integer[], --observations
+  'There is a chest', --observations
   ARRAY [0, 1, 2, 3], --exits
   4, --x coord
   2--y coord
@@ -58,7 +58,7 @@ VALUES
   'Location 3 afternoon.', 
   'Location 3 evening.',
   'Location 3 night.'], --time based descriptions
-  ARRAY []::integer[], --observations
+  'You see a shiny gem', --observations
   ARRAY [3], --exits
   11, --x coord
   1--y coord
@@ -71,7 +71,7 @@ VALUES
   'Location 4 afternoon.', 
   'Location 4 evening.',
   'Location 4 night.'], --time based descriptions
-  ARRAY []::integer[], --observations
+  'You can see a toad, it looks suspicious..', --observations
   ARRAY [1, 2], --exits
   2, --x coord
   2--y coord
@@ -84,7 +84,7 @@ VALUES
   'Location 5 afternoon.', 
   'Location 5 evening.',
   'Location 5 night.'], --time based descriptions
-  ARRAY []::integer[], --observations
+  'You can not see a thing, it is far too foggy.', --observations
   ARRAY [0, 1, 2, 3], --exits
   4, --x coord
   2--y coord
@@ -97,7 +97,7 @@ VALUES
   'Location 6 afternoon.', 
   'Location 6 evening.',
   'Location 6 night.'], --time based descriptions
-  ARRAY []::integer[], --observations
+  'There are no words to describe what you see.', --observations
   ARRAY [3, 1, 2], --exits
   6, --x coord
   2--y coord
@@ -109,7 +109,7 @@ VALUES
   'Location 7 afternoon.', 
   'Location 7 evening.',
   'Location 7 night.'], --time based descriptions
-  ARRAY []::integer[], --observations
+  'You can see a deep deep well.', --observations
   ARRAY [3, 0, 2], --exits
   9, --x coord
   2--y coord
@@ -121,7 +121,7 @@ VALUES
   'Location 8 afternoon.', 
   'Location 8 evening.',
   'Location 8 night.'], --time based descriptions
-  ARRAY []::integer[], --observations
+  'You can see the remains of an animal. It has seen better days.', --observations
   ARRAY [0], --exits
   2, --x coord
   3--y coord
@@ -133,7 +133,7 @@ VALUES
   'Location 9 afternoon.', 
   'Location 9 evening.',
   'Location 9 night.'], --time based descriptions
-  ARRAY []::integer[], --observations
+  'You can see an axe. Keep the axe.', --observations
   ARRAY [3], --exits
   11, --x coord
   3--y coord
@@ -145,7 +145,7 @@ VALUES
   'Location 10 afternoon.', 
   'Location 10 evening.',
   'Location 10 night.'], --time based descriptions
-  ARRAY []::integer[], --observations
+  'You see a smouldering fire.', --observations
   ARRAY [0, 2], --exits
   4, --x coord
   6--y coord
@@ -157,7 +157,7 @@ VALUES
   'Location 11 afternoon.', 
   'Location 11 evening.',
   'Location 11 night.'], --time based descriptions
-  ARRAY []::integer[], --observations
+  'A well trodden path is before you.', --observations
   ARRAY [0, 2], --exits
   7, --x coord
   6--y coord
@@ -169,7 +169,7 @@ VALUES
   'Location 12 afternoon.', 
   'Location 12 evening.',
   'Location 12 night.'], --time based descriptions
-  ARRAY []::integer[], --observations
+  'A burning hut is in the distance.', --observations
   ARRAY [0, 1, 2, 3], --exits
   4, --x coord
   8--y coord
@@ -181,7 +181,7 @@ VALUES
   'Location 13 afternoon.', 
   'Location 13 evening.',
   'Location 13 night.'], --time based descriptions
-  ARRAY []::integer[], --observations
+  'You see a deep X on the ground..', --observations
   ARRAY [0], --exits
   0, --x coord
   9--y coord
@@ -193,7 +193,7 @@ VALUES
   'Location 14 afternoon.', 
   'Location 14 evening.',
   'Location 14 night.'], --time based descriptions
-  ARRAY []::integer[], --observations
+  'You can see a chalice with what look to be wine in it.', --observations
   ARRAY [0, 1, 2, 3], --exits
   3, --x coord
   13--y coord
@@ -205,7 +205,7 @@ VALUES
   'Location 15 afternoon.', 
   'Location 15 evening.',
   'Location 15 night.'], --time based descriptions
-  ARRAY []::integer[], --observations
+  'You cannot see anything, but you can hear some faint whispers amongst the trees.', --observations
   ARRAY [0], --exits
   1, --x coord
   15--y coord
@@ -217,7 +217,7 @@ VALUES
   'Location 16 afternoon.', 
   'Location 16 evening.',
   'Location 16 night.'], --time based descriptions
-  ARRAY []::integer[], --observations
+  'You see a ghostly image in front of you.', --observations
   ARRAY [1, 3], --exits
   9, --x coord
   8--y coord
@@ -229,7 +229,7 @@ VALUES
   'Location 17 afternoon.', 
   'Location 17 evening.',
   'Location 17 night.'], --time based descriptions
-  ARRAY []::integer[], --observations
+  'You see a sword, stuck fast into a rock.', --observations
   ARRAY [0, 2], --exits
   3, --x coord
   17--y coord

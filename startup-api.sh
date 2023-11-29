@@ -1,5 +1,5 @@
 cd .docker
-docker compose up -d --build
+docker compose up -d && cd ..
 
-cd ../api
-python -m flask --app app --debug run --port 5050
+cd api
+flask --app app --debug run --port 5050
