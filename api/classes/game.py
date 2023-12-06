@@ -1,5 +1,6 @@
 
 from classes.player import Player
+from classes.creature import Creature
 from repositories.locations_repository import LocationsRepository
 from repositories.items_repository import ItemsRepository
 from repositories.creature_types_repository import CreatureTypesRepository
@@ -20,6 +21,12 @@ class Game:
             location.creature_types = [creature_type 
                                        for creature_type in self.creature_types.values()
                                         if creature_type.id in location.creature_type_ids.keys()]
+            location.creatures = [Creature.generate(creature_type)
+                                  for creature_type in location.creature_types]
+
+            location.items = [item for item in self.items.values() 
+                                   if item.id in location.item_ids.keys()]
+            
 
         self.player = None
 

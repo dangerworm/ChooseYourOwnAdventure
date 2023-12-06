@@ -35,7 +35,7 @@ class Location:
         return output
 
     def observations_and_items(self):
-        items = [str(item) for item in self.items]
+        items = [str(item.name) for item in self.items]
 
         output = ''
         if len(self.observations) > 0:

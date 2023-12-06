@@ -1,11 +1,16 @@
 # ChooseYourOwnAdventure
 
 # Quick start
+if you have an environment, activate that environment
+
+Open Docker and DBeaver
+
 open two terminals
 in one of these type:
 
 `./startup-api.sh`
 
+This will fail first time due to the speed. Don't panic. Run it again. 
 
 press enter
 

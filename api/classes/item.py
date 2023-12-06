@@ -18,3 +18,5 @@ class Item:
         list_of_items = [item for item in item_objects if item.id in self.contains]
         output = 'You see ' + ', '.join([str(item) for item in list_of_items]) + '.\n'
         return output
+
+    

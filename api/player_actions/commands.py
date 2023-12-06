@@ -1,5 +1,6 @@
 from classes.game_response import GameResponse
 from player_actions.attack import Attack
+from player_actions.drop import Drop
 from player_actions.investigate import Investigate
 from player_actions.navigate import Navigate
 from player_actions.take import Take
@@ -22,10 +23,18 @@ def run_command(game, command, arguments):
   
   elif command == 'cast':
      return cast(game, arguments)
+  
   elif command == 'drop':
-     return drop(game, arguments)
+   item_name, _ = Drop.parse(game, arguments)
+   valid, message = Drop.can_act(game, item_name)
+   if valid:
+      message = Drop.act(game, item_name)
+
+   return GameResponse(game.player.id, message, game.player.location.id)
+
   elif command == 'equip':
      return equip(game, arguments)
+  
   elif command in ['go', 'walk', 'move', 'visit']:
      target, _ = Navigate.parse(game, arguments)
      valid, message = Navigate.can_act(game, target)
@@ -57,10 +66,11 @@ def run_command(game, command, arguments):
   elif command == 'save':
      return save(game)
   elif command == 'take' or command == 'pick up':
-    item = Take.parse(game, arguments)
-    valid, message = Take.can_act(game, item)
+    item_name, _ = Take.parse(game, arguments)
+    valid, message = Take.can_act(game, item_name)
     if valid:
-       message = Take.act(game, item)
+       message = Take.act(game, item_name)
+
     return GameResponse(game.player.id, message, None)
 
   elif command == 'unequip':
