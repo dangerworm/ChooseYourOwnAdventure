@@ -1,5 +1,8 @@
 # ChooseYourOwnAdventure
 
+# STEP ONE!
+Check the terminal is in the right environment if you are using an environment (Matt!)
+
 # Quick start
 if you have an environment, activate that environment
 

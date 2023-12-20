@@ -15,7 +15,7 @@ VALUES
   'It''s a calm, breezy afternoon.', 
   'It''s a quiet, warm evening.', 
   'It''s a dark, gloomy night.'], --time based descriptions
-  'There is a shiny sword', --observations
+  'This looks like Ogre country...', --observations
   ARRAY [2], --exits
   4, --x coord
   1--y coord
@@ -28,7 +28,7 @@ VALUES
   'Location 2 afternoon.', 
   'Location 2 evening.',
   'Location 2 night.'], --time based descriptions
-  'There is a chest', --observations
+  'This looks like a peaceful spot', --observations
   ARRAY [0, 1, 2, 3], --exits
   4, --x coord
   2--y coord
@@ -58,7 +58,7 @@ VALUES
   'Location 3 afternoon.', 
   'Location 3 evening.',
   'Location 3 night.'], --time based descriptions
-  'You see a shiny gem', --observations
+  'You hear something nearby', --observations
   ARRAY [3], --exits
   11, --x coord
   1--y coord
@@ -109,7 +109,7 @@ VALUES
   'Location 7 afternoon.', 
   'Location 7 evening.',
   'Location 7 night.'], --time based descriptions
-  'You can see a deep deep well.', --observations
+  'You can smell a fire burning somewhere', --observations
   ARRAY [3, 0, 2], --exits
   9, --x coord
   2--y coord
@@ -121,7 +121,7 @@ VALUES
   'Location 8 afternoon.', 
   'Location 8 evening.',
   'Location 8 night.'], --time based descriptions
-  'You can see the remains of an animal. It has seen better days.', --observations
+  'You can smell something awful. Just awful!', --observations
   ARRAY [0], --exits
   2, --x coord
   3--y coord
@@ -133,7 +133,7 @@ VALUES
   'Location 9 afternoon.', 
   'Location 9 evening.',
   'Location 9 night.'], --time based descriptions
-  'You can see an axe. Keep the axe.', --observations
+  'You cannot see anything at all.', --observations
   ARRAY [3], --exits
   11, --x coord
   3--y coord
@@ -181,7 +181,7 @@ VALUES
   'Location 13 afternoon.', 
   'Location 13 evening.',
   'Location 13 night.'], --time based descriptions
-  'You see a deep X on the ground..', --observations
+  'You are concerned you are going in circles.', --observations
   ARRAY [0], --exits
   0, --x coord
   9--y coord
@@ -193,7 +193,7 @@ VALUES
   'Location 14 afternoon.', 
   'Location 14 evening.',
   'Location 14 night.'], --time based descriptions
-  'You can see a chalice with what look to be wine in it.', --observations
+  'You are sure you have been here before. It is all getting confusing.', --observations
   ARRAY [0, 1, 2, 3], --exits
   3, --x coord
   13--y coord
@@ -229,7 +229,7 @@ VALUES
   'Location 17 afternoon.', 
   'Location 17 evening.',
   'Location 17 night.'], --time based descriptions
-  'You see a sword, stuck fast into a rock.', --observations
+  'You are getting weary.', --observations
   ARRAY [0, 2], --exits
   3, --x coord
   17--y coord

@@ -16,6 +16,11 @@ function App() {
     apiResponseError,
   } = useApiContext();
 
+const handleSendCommand = (command) => {
+  setCommand("")
+  sendCommand(command)
+}
+
   useEffect(() => {
     initialise();
   }, [])
@@ -36,7 +41,7 @@ function App() {
             />
             <Button
               variant="outlined"
-              onClick={() => sendCommand(command)}
+              onClick={() => handleSendCommand(command)}
             >
               Send Command
             </Button>

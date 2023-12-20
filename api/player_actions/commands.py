@@ -82,8 +82,6 @@ def cast(game, spell):
 
     pass
 
-def drop(game, item):
-    pass
 
 def equip(game, item):
     pass
@@ -93,7 +91,7 @@ def help():
     pass
 
 def inventory(game):
-    pass
+    return GameResponse(game.player.id, game.player.check_player_inventory(),None)
 
 def load(game):
     pass
@@ -105,10 +103,6 @@ def quit(game):
     pass
 
 def save(game):
-    pass
-
-def take(game, item):
-    
     pass
 
 def unequip(game, item):

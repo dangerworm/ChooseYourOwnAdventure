@@ -36,5 +36,6 @@ class Take(Action):
         desired_item = [location_item for location_item in game.player.location.items if location_item.name.lower() == item][0]
         
         game.player.items.append(desired_item)
+        game.player.location.items.remove(desired_item)
 
         return f'You pick up the {desired_item}.'
