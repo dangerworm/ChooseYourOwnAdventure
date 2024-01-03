@@ -5,7 +5,6 @@ class Drop(Action):
     """
     Static class so does not require __init__ or any attributes to be passed in.
     """
-    
 
     def can_act(game, item_name):
         """

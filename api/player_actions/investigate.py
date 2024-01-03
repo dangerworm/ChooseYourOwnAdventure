@@ -13,7 +13,7 @@ class Investigate(Action):
         investigate.
         """
 
-        investigate_target_names, _ = Action.get_available_targets(game, target)
+        investigate_target_names, _ = Action.get_nearby_items(game, target, includeCreatures = True)
         
         valid = True
         message = ''

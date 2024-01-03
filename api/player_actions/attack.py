@@ -1,6 +1,7 @@
 from player_actions.action import Action
 from random import choice
 
+
 class Attack(Action):
     """
     Static class so does not require __init__ or any attributes to be passed in.
@@ -11,22 +12,28 @@ class Attack(Action):
         Function to check whether the player has any equipment (weapons etc.) that 
         can be used to attack a target, and whether the target is in the same
         location, to be attacked.
-        
+
         """
+
+        valid = True
+        message = ''
         
-        attack_target_names, is_creature = Action.get_available_targets(game, target)
-        
-        item_names = [item.name.lower() for item in game.player.items]
-        item_names += [item.name.lower() for item in game.player.location.items]
-        
+        if target == None:
+            valid = False
+            message = 'You did not specify a target to attack.'
+            return valid, message, False
+
+        attack_target_names, is_creature = Action.get_available_attack_targets(
+            game, target)
+
+        item_names, _ = Action.get_nearby_items(
+            game, target, includeCreatures = False)
+
         all_items_in_item_names = True
 
         for item in weapons:
             if item != 'fist' and item not in item_names:
                 all_items_in_item_names = False
-
-        valid = True
-        message = ''
 
         if target not in attack_target_names:
             valid = False
@@ -35,18 +42,17 @@ class Attack(Action):
         elif target == None:
             valid = False
             message = 'You did not specify a target to attack.'
-        
+
         elif not all_items_in_item_names:
             valid = False
             if len(item_names) == 1:
                 message = 'You do not have that item.'
             else:
                 message = 'You do not have those items.'
-        
-        return valid, message, is_creature
-        
 
-    def act (game, target, is_creature, weapons):
+        return valid, message, is_creature
+
+    def act(game, target, is_creature, weapons):
         """
         Function to attack a target (e.g. enemy, object such as a door, etc.). 
         Takes 4 arguments:
@@ -63,24 +69,29 @@ class Attack(Action):
             attack_targets = [game.player]
         else:
             # Get the game object(s) that match the free text word for the target creature
-            attack_targets = [creature for creature in game.player.location.creatures if creature.name.lower() == target.lower() and creature.hit_points > 0]
-            attack_targets += [item for item in game.player.location.items if item.name.lower() == target.lower()]
-            
-            if len(attack_targets) == 0:
-                attack_targets = [creature for creature in game.player.location.creatures if creature.name.lower() == target.lower()]
+            attack_targets = [creature for creature in game.player.location.creatures if creature.name.lower(
+            ) == target.lower() and creature.hit_points > 0]
+            attack_targets += [item for item in game.player.location.items if item.name.lower()
+                               == target.lower()]
 
-            attack_weapons = [item for item in game.player.items if item.name.lower() in weapons]
-            attack_weapons += [item for item in game.player.location.items if item.name.lower() in weapons]
+            if len(attack_targets) == 0:
+                attack_targets = [
+                    creature for creature in game.player.location.creatures if creature.name.lower() == target.lower()]
+
+            attack_weapons = [
+                item for item in game.player.items if item.name.lower() in weapons]
+            attack_weapons += [
+                item for item in game.player.location.items if item.name.lower() in weapons]
 
         if weapons[0] == 'fist':
-            attack_weapons = [type('',(object,),{'attack_points': 1})()]
+            attack_weapons = [type('', (object,), {'attack_points': 1})()]
 
         thing_to_hit = attack_targets[0]
 
         was_dead = thing_to_hit.hit_points <= 0
 
         start_hp = thing_to_hit.hit_points
-        
+
         for weapon in attack_weapons:
             thing_to_hit.hit_points -= weapon.attack_points
 
@@ -116,7 +127,7 @@ class Attack(Action):
         is_dead = was_dead
 
         if was_dead:
-            adjective =  'dead '
+            adjective = 'dead '
         elif hp <= 0:
             extra_text = f' and {killed} it.'
             is_dead = True

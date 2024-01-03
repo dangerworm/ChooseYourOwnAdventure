@@ -8,6 +8,7 @@ class Player(Creature):
         self.xp = xp
         self.location_history = location_history
         self.conversation_history = conversation_history
+        self.equipped = []
 
     def set_location(self, location, time_of_day):
         location.spawn_creatures(time_of_day)
