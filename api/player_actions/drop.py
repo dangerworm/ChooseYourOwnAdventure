@@ -12,7 +12,8 @@ class Drop(Action):
         can be dropped        
         """
         
-        item_names = [item.name.lower() for item in game.player.items]
+        item_names = [item.name.lower() for item in game.player.equipped]
+        item_names += [item.name.lower() for item in game.player.items]
 
         valid = True
         message = ''
@@ -35,9 +36,23 @@ class Drop(Action):
         2) item 
         """
 
-        item = [item for item in game.player.items if item.name.lower() == item_name][0]
+        item = None
+        source = ''
+
+        items = [item for item in game.player.equipped if item.name.lower() == item_name]
+
+        if len(items) > 0:
+            source = 'equipped'
+            item = items[0]
+        else:
+            source = 'items'
+            item = [item for item in game.player.items if item.name.lower() == item_name][0]
         
-        game.player.items.remove(item)
+        if source == 'equipped':
+            game.player.equipped.remove(item)
+        else:
+            game.player.items.remove(item)
+
         game.player.location.items.append(item)
 
         message = f'You have dropped the {item_name}'
