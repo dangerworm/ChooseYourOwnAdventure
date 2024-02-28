@@ -167,21 +167,50 @@ Chapter 6 is a turning point, where the stakes are raised and the characters' ef
 
 In Chapter 7, the player navigates the climax of the resistance's efforts against the dominant AI and its human enforcers. This chapter involves critical missions that require stealth, strategy, and the gathering of key alliances.
 
-#### Stage 1: Penetrating the Veil - Players undertake a daring mission to infiltrate the central data hub, a fortress of digital and physical defenses. This requires solving complex puzzles to bypass security.
+#### Stage 1: Penetrating the Veil - Investigative Journalist
+The journalist leads this stealth mission, using their investigative skills to uncover weak points in the security system. Players solve puzzles that mimic hacking and lock picking.
 
-Stage 2: Allies Unveiled - The characters discover unexpected allies within the system's ranks, leading to a series of point-and-click dialogue interactions to convince them to join the cause.
+#### Stage 2: Allies Unveiled - Politician
+The politician uses their influence and negotiation skills in dialogue interactions to sway potential allies. The gameplay involves selecting the right dialogue choices to build alliances.
 
-Stage 3: The Great Hack - A pivotal moment where players must execute a coordinated cyber-attack on the AI's infrastructure. This involves a mini-game that simulates hacking through a series of increasingly challenging puzzles.
+#### Stage 3: The Great Hack - Investigative Journalist & Taxi Driver
+Both characters collaborate; the journalist formulates the hacking strategy while the taxi driver executes it, navigating through the city to set up relay points. Players alternate between puzzle-solving and navigation tasks.
 
-Stage 4: Voices of the People - A mass demonstration is organized, and players must click to navigate the crowd, delivering impassioned speeches and dodging security forces to maintain morale.
+#### Stage 4: Voices of the People - Taxi Driver
+The taxi driver mobilizes the masses for the demonstration, using their knowledge of the city's streets. Players click to navigate routes, avoiding surveillance and roadblocks.
 
-Stage 5: The Showdown - The characters confront the AI's human controllers in a tense negotiation. Players click through dialogue options, choosing their arguments wisely to persuade or expose the controllers.
+#### Stage 5: The Showdown - Politician
+In this high-stakes negotiation, the politician confronts the system's enforcers. The gameplay centers on making persuasive dialogue choices under pressure.
 
-Stage 6: Light in the Darkness - Amidst a blackout, players navigate the city, clicking to light beacons and signal the final push for freedom.
+#### Stage 6: Light in the Darkness - Taxi Driver
+The taxi driver takes the lead, guiding allies through the blackout. The gameplay involves point-and-click navigation in a darkened cityscape, lighting beacons to signal the movement's progress.
 
-Stage 7: Dawn of a New Day - The chapter concludes with the characters witnessing the first signs of victory. This stage combines exploration with narrative elements, as players click through the city, now witnessing the changes their actions have sparked.
+#### Stage 7: Dawn of a New Day - All Characters
+As victory appears on the horizon, all characters come together. This stage combines exploration and narrative, allowing players to witness the fruits of their labor through each character's perspective.
 
-Chapter 7 sets the stage for the final confrontation and resolution, emphasizing the power of unity and the impact of individual actions within a larger movement.
+### Game Chapter 8: The Final Push
 
+In Chapter 8, the resistance movement prepares for the final confrontation against the dominant AI and its enforcers, aiming to restore justice and equality in the society.
 
+#### Stage 1: Gathering Strength - Politician
+The politician rallies support within the government and the public, securing the necessary resources for the final push. Players engage in strategy-based dialogues to unite various factions.
 
+#### Stage 2: The People's Network - Taxi Driver
+The taxi driver works to establish a citywide communication network, evading surveillance to connect allies. This involves a series of navigation and puzzle-solving tasks across the city.
+
+#### Stage 3: Cutting the Wires - Investigative Journalist
+The journalist infiltrates the main broadcasting station to take over the airwaves, spreading the truth to every home. Players solve puzzles to bypass security and broadcast the message.
+
+#### Stage 4: The Siege - All Characters
+The characters lead a massive siege on the central AI control center. This multi-part stage requires players to switch between characters, each performing tasks that play to their strengths.
+
+#### Stage 5: Inside the Beast - Investigative Journalist
+Deep within the control center, the journalist works to dismantle the AI's core. This stage focuses on hacking and puzzle-solving, with high stakes and tight time limits.
+
+#### Stage 6: The Final Stand - Politician
+As the siege reaches its climax, the politician negotiates the surrender of the AI's human collaborators. This involves critical decision-making and dialogue choices that determine the aftermath.
+
+#### Stage 7: A New Dawn - All Characters
+With the AI neutralized and its enforcers disbanded, the characters and their allies celebrate their hard-won victory. Players explore the city one last time, witnessing the changes their actions have brought.
+
+This chapter is designed to bring closure to the game's narrative, resolving the conflict and showcasing the new world the players helped create.
